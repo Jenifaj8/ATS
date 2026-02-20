@@ -1,0 +1,46 @@
+﻿@model List<ATS.Core.Entities.Assessment>
+
+@{
+    ViewData["Title"] = "Assessments";
+}
+
+<h1>Assessments</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Add Assessment</a>
+</p>
+
+@if (!Model.Any())
+{
+    <p>No assessments found.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Course</th>
+            <th>Due Date</th>
+            <th>Status</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var assessment in Model)
+        {
+            <tr>
+                <td>@assessment.Name</td>
+                <td>@assessment.Course?.Name</td>
+                <td>@assessment.DueDate.ToShortDateString()</td>
+                <td>@assessment.Status</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@assessment.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@assessment.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@assessment.Id">Delete</a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+}

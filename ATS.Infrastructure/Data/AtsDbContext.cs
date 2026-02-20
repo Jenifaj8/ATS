@@ -13,4 +13,14 @@ public class AtsDbContext : DbContext
     public DbSet<Course> Courses { get; set; }
 
     public DbSet<Assessment> Assessments { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        // Fix PostgreSQL DateTime issue
+        modelBuilder.Entity<Assessment>()
+            .Property(a => a.DueDate)
+            .HasColumnType("timestamp without time zone");
+    }
 }
