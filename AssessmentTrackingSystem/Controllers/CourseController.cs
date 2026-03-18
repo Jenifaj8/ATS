@@ -18,6 +18,7 @@ public class CourseController : Controller
     public async Task<IActionResult> Index()
     {
         var courses = await _context.Courses
+            .Include(c => c.Assessments)
             .OrderBy(c => c.Name)
             .ToListAsync();
 
