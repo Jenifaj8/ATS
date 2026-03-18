@@ -26,4 +26,17 @@
       <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.4" />
     </ItemGroup>
 
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="WebApplication1\WebApplication1\appsettings.Development.json" />
+      <_ContentIncludedByDefault Remove="WebApplication1\WebApplication1\appsettings.json" />
+      <_ContentIncludedByDefault Remove="WebApplication1\WebApplication1\Properties\launchSettings.json" />
+      <_ContentIncludedByDefault Remove="WebApplication1\WebApplication1\Views\Home\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApplication1\WebApplication1\Views\Home\Privacy.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApplication1\WebApplication1\Views\Shared\Error.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApplication1\WebApplication1\Views\Shared\_Layout.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApplication1\WebApplication1\Views\Shared\_ValidationScriptsPartial.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApplication1\WebApplication1\Views\_ViewImports.cshtml" />
+      <_ContentIncludedByDefault Remove="WebApplication1\WebApplication1\Views\_ViewStart.cshtml" />
+    </ItemGroup>
+
 </Project>
