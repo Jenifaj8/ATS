@@ -76,6 +76,26 @@ body {
   white-space: nowrap;
 }
 
+.assessment-shell {
+  width: min(100%, 400px);
+  margin: 0 auto;
+}
+
+.assessment-shell .table-responsive {
+  overflow-x: auto;
+}
+
+.assessment-shell .assessment-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+.assessment-shell .assessment-table th,
+.assessment-shell .assessment-table td {
+  white-space: normal;
+  word-break: break-word;
+}
+
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);
   text-align: end;
