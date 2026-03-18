@@ -1,0 +1,128 @@
+@model AssessmentTrackingSystem.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<section class="dashboard-hero">
+    <div>
+        <p class="dashboard-eyebrow mb-2">Student Overview</p>
+        <h1 class="mb-2">Dashboard</h1>
+        <p class="text-muted mb-0">
+            This page is ready to connect to the logged-in user flow later and already shows the main course and assessment stats.
+        </p>
+    </div>
+
+    <div class="d-flex flex-wrap gap-2">
+        <a asp-controller="Course" asp-action="Index" class="btn btn-outline-primary">View Courses</a>
+        <a asp-controller="Assessment" asp-action="Index" class="btn btn-primary">View Assessments</a>
+    </div>
+</section>
+
+<section class="row g-4 mb-4">
+    <div class="col-12 col-md-6 col-xl">
+        <article class="dashboard-stat-card total">
+            <span class="dashboard-stat-icon"><i class="bi bi-clipboard-data"></i></span>
+            <p class="dashboard-stat-label">Total Assessments</p>
+            <h2>@Model.TotalAssessments</h2>
+        </article>
+    </div>
+
+    <div class="col-12 col-md-6 col-xl">
+        <article class="dashboard-stat-card courses">
+            <span class="dashboard-stat-icon"><i class="bi bi-journal-bookmark"></i></span>
+            <p class="dashboard-stat-label">Total Courses</p>
+            <h2>@Model.TotalCourses</h2>
+        </article>
+    </div>
+
+    <div class="col-12 col-md-6 col-xl">
+        <article class="dashboard-stat-card not-started">
+            <span class="dashboard-stat-icon"><i class="bi bi-hourglass-split"></i></span>
+            <p class="dashboard-stat-label">Not Started</p>
+            <h2>@Model.NotStartedCount</h2>
+        </article>
+    </div>
+
+    <div class="col-12 col-md-6 col-xl">
+        <article class="dashboard-stat-card in-progress">
+            <span class="dashboard-stat-icon"><i class="bi bi-arrow-repeat"></i></span>
+            <p class="dashboard-stat-label">In Progress</p>
+            <h2>@Model.InProgressCount</h2>
+        </article>
+    </div>
+
+    <div class="col-12 col-md-6 col-xl">
+        <article class="dashboard-stat-card completed">
+            <span class="dashboard-stat-icon"><i class="bi bi-check-circle"></i></span>
+            <p class="dashboard-stat-label">Completed</p>
+            <h2>@Model.CompletedCount</h2>
+        </article>
+    </div>
+</section>
+
+<section class="row g-4">
+    <div class="col-12 col-xl-6">
+        <article class="dashboard-panel h-100">
+            <div class="dashboard-panel-header">
+                <div>
+                    <p class="dashboard-panel-kicker mb-1">Due Soon</p>
+                    <h3 class="h4 mb-0">Upcoming Assessments</h3>
+                </div>
+                <span class="badge rounded-pill text-bg-light">@Model.UpcomingAssessments.Count</span>
+            </div>
+
+            @if (!Model.UpcomingAssessments.Any())
+            {
+                <p class="text-muted mb-0">No assessments due in the next 7 days.</p>
+            }
+            else
+            {
+                <div class="dashboard-list">
+                    @foreach (var assessment in Model.UpcomingAssessments)
+                    {
+                        <div class="dashboard-list-item">
+                            <div>
+                                <h4 class="h6 mb-1">@assessment.Name</h4>
+                                <p class="text-muted mb-0">@assessment.Course?.Code - @assessment.DueDate.ToString("MMM dd, yyyy")</p>
+                            </div>
+                            <span class="badge text-bg-warning-subtle border">@assessment.Status</span>
+                        </div>
+                    }
+                </div>
+            }
+        </article>
+    </div>
+
+    <div class="col-12 col-xl-6">
+        <article class="dashboard-panel h-100">
+            <div class="dashboard-panel-header">
+                <div>
+                    <p class="dashboard-panel-kicker mb-1">Needs Attention</p>
+                    <h3 class="h4 mb-0">Overdue Assessments</h3>
+                </div>
+                <span class="badge rounded-pill text-bg-light">@Model.OverdueAssessments.Count</span>
+            </div>
+
+            @if (!Model.OverdueAssessments.Any())
+            {
+                <p class="text-muted mb-0">Nothing overdue right now.</p>
+            }
+            else
+            {
+                <div class="dashboard-list">
+                    @foreach (var assessment in Model.OverdueAssessments)
+                    {
+                        <div class="dashboard-list-item">
+                            <div>
+                                <h4 class="h6 mb-1">@assessment.Name</h4>
+                                <p class="text-muted mb-0">@assessment.Course?.Code - @assessment.DueDate.ToString("MMM dd, yyyy")</p>
+                            </div>
+                            <span class="badge text-bg-danger-subtle border">@assessment.Status</span>
+                        </div>
+                    }
+                </div>
+            }
+        </article>
+    </div>
+</section>

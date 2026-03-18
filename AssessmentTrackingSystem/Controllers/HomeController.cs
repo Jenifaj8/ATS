@@ -17,7 +17,18 @@ public class HomeController : Controller
         _context = context;
     }
 
-    public async Task<IActionResult> Index()
+    public IActionResult Index()
+    {
+        return View();
+    }
+
+    public async Task<IActionResult> Dashboard()
+    {
+        var vm = await BuildDashboardViewModelAsync();
+        return View(vm);
+    }
+
+    private async Task<DashboardViewModel> BuildDashboardViewModelAsync()
     {
         var today = DateTime.Today;
         var nextWeek = today.AddDays(7);
@@ -41,7 +52,7 @@ public class HomeController : Controller
         var inProgress = await _context.Assessments.CountAsync(a => a.Status == "In Progress");
         var completed = await _context.Assessments.CountAsync(a => a.Status == "Completed");
 
-        var vm = new DashboardViewModel
+        return new DashboardViewModel
         {
             UpcomingAssessments = upcoming,
             OverdueAssessments = overdue,
@@ -51,8 +62,6 @@ public class HomeController : Controller
             InProgressCount = inProgress,
             CompletedCount = completed
         };
-
-        return View(vm);
     }
 
     public IActionResult Privacy()

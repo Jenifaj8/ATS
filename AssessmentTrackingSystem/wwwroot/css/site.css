@@ -76,6 +76,127 @@ body {
   white-space: nowrap;
 }
 
+.dashboard-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding: 1.75rem;
+  margin-bottom: 1.5rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, #f8fbff 0%, #eef4ff 50%, #fff8ee 100%);
+}
+
+.dashboard-eyebrow,
+.dashboard-panel-kicker {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0b5ed7;
+}
+
+.dashboard-stat-card,
+.dashboard-panel {
+  height: 100%;
+  padding: 1.5rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 1.25rem;
+  background: #fff;
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
+}
+
+.dashboard-stat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-stat-card::after {
+  content: "";
+  position: absolute;
+  inset: auto -20px -30px auto;
+  width: 90px;
+  height: 90px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.dashboard-stat-card h2 {
+  margin-bottom: 0;
+  font-size: 2rem;
+}
+
+.dashboard-stat-label {
+  margin: 0.9rem 0 0.35rem;
+  color: #475569;
+  font-weight: 600;
+}
+
+.dashboard-stat-icon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 1rem;
+  display: inline-grid;
+  place-items: center;
+  font-size: 1.25rem;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.dashboard-stat-card.total {
+  background: linear-gradient(135deg, #e8f1ff 0%, #dceaff 100%);
+}
+
+.dashboard-stat-card.courses {
+  background: linear-gradient(135deg, #eefbf3 0%, #dff7e8 100%);
+}
+
+.dashboard-stat-card.not-started {
+  background: linear-gradient(135deg, #fff7e8 0%, #ffefcc 100%);
+}
+
+.dashboard-stat-card.in-progress {
+  background: linear-gradient(135deg, #eef5ff 0%, #dae8ff 100%);
+}
+
+.dashboard-stat-card.completed {
+  background: linear-gradient(135deg, #ebfff4 0%, #d8fbe8 100%);
+}
+
+.dashboard-panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.dashboard-list {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.dashboard-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  background: #f8fafc;
+}
+
+@media (max-width: 767.98px) {
+  .dashboard-hero {
+    padding: 1.25rem;
+  }
+
+  .dashboard-list-item {
+    align-items: start;
+    flex-direction: column;
+  }
+}
+
 .form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
   color: var(--bs-secondary-color);
   text-align: end;
