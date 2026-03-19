@@ -4,40 +4,44 @@
     ViewData["Title"] = "Add Assessment";
 }
 
-<section class="assessment-shell">
-    <h1>Add Assessment</h1>
+<section class="form-page-layout">
+    <div class="form-page-shell form-page-shell-wide">
+        <div class="form-page-panel">
 
-    <form asp-action="Create" method="post">
-        <div class="mb-3">
-            <label asp-for="Name" class="form-label"></label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
+            <h1>Add Assessment</h1>
+
+            <form asp-action="Create" method="post">
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control"/>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="CourseId" class="form-label">Course</label>
+                    <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
+                    <span asp-validation-for="CourseId" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Due Date</label>
+                    <input type="date" asp-for="DueDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")"/>
+                    <span asp-validation-for="DueDate" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Status" class="form-label"></label>
+                    <select asp-for="Status" class="form-control">
+                        <option>Not Started</option>
+                        <option>In Progress</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+            </form>
         </div>
-
-        <div class="mb-3">
-            <label asp-for="CourseId" class="form-label">Course</label>
-            <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
-            <span asp-validation-for="CourseId" class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Due Date</label>
-            <input type="date" asp-for="DueDate" class="form-control" min="@DateTime.Today.ToString("yyyy-MM-dd")" />
-            <span asp-validation-for="DueDate" class="text-danger"></span>
-        </div>
-
-        <div class="mb-3">
-            <label asp-for="Status" class="form-label"></label>
-            <select asp-for="Status" class="form-control">
-                <option>Not Started</option>
-                <option>In Progress</option>
-                <option>Completed</option>
-            </select>
-        </div>
-
-        <button type="submit" class="btn btn-primary">Save</button>
-        <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-    </form>
+    </div>
 </section>
 
 @section Scripts {

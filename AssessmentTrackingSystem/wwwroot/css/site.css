@@ -81,6 +81,23 @@ body {
   margin: 0 auto;
 }
 
+.form-page-layout {
+  min-height: calc(100vh - 220px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0 3rem;
+}
+
+.form-page-shell {
+  width: min(100%, 400px);
+  margin: 0 auto;
+}
+
+.form-page-shell-wide {
+  width: min(100%, 720px);
+}
+
 .assessment-shell .table-responsive {
   overflow-x: auto;
 }
@@ -103,4 +120,25 @@ body {
 
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
+}
+
+.form-page-panel {
+  width: 100%;
+  padding: 2rem;
+  border: 1px solid #dbe4f0;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 0.75rem 1.5rem rgba(15, 23, 42, 0.06);
+  box-sizing: border-box;
+}
+
+@media (max-width: 576px) {
+  .form-page-layout {
+    min-height: auto;
+    padding: 1rem 0 2rem;
+  }
+
+  .form-page-panel {
+    padding: 1.25rem;
+  }
 }
