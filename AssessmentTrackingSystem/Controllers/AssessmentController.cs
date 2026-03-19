@@ -65,7 +65,7 @@ public class AssessmentController : Controller
 
         _context.Add(assessment);
         await _context.SaveChangesAsync();
-        return RedirectToAction(nameof(Index));
+        return RedirectToAction("Index", "Calendar", new { weekStart = assessment.DueDate.ToString("yyyy-MM-dd") });
     }
 
     // GET: /Assessment/Edit/5
