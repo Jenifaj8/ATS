@@ -4,44 +4,58 @@
     ViewData["Title"] = "Assessments";
 }
 
-<h1>Assessments</h1>
+<section class="course-page-header mb-4">
+    <div>
+        <h1 class="mb-2">Assessments</h1>
+        <p class="text-muted mb-0">Track upcoming deadlines and stay on top of every course requirement.</p>
+    </div>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Add Assessment</a>
-    <a asp-controller="Calendar" asp-action="Index" class="btn btn-outline-primary ms-2">Open Calendar</a>
-</p>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="bi bi-plus-lg me-1"></i>Add Assessment
+    </a>
+</section>
 
 @if (!Model.Any())
 {
-    <p>No assessments found.</p>
+    <div class="course-empty-state">
+        <div class="course-empty-icon">
+            <i class="bi bi-clipboard-check"></i>
+        </div>
+        <h2>No assessments yet</h2>
+        <p class="text-muted">Add your first assessment and it will appear here.</p>
+        <a asp-action="Create" class="btn btn-primary">Create First Assessment</a>
+    </div>
 }
 else
 {
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Course</th>
-            <th>Due Date</th>
-            <th>Status</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
+    <div class="row g-4">
         @foreach (var assessment in Model)
         {
-            <tr>
-                <td>@assessment.Name</td>
-                <td>@assessment.Course?.Name</td>
-                <td>@assessment.DueDate.ToShortDateString()</td>
-                <td>@assessment.Status</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@assessment.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@assessment.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@assessment.Id">Delete</a>
-                </td>
-            </tr>
+            <div class="col-12 col-md-6 col-xl-4">
+                <article class="card h-100 shadow-sm border-0 course-card">
+                    <div class="card-body d-flex flex-column">
+                        <div class="d-flex justify-content-between align-items-start gap-3 mb-3">
+                            <div>
+                                <p class="course-card-code mb-2">@assessment.Course?.Code</p>
+                                <h2 class="h4 mb-0">@assessment.Name</h2>
+                            </div>
+                            <span class="badge rounded-pill text-bg-light course-card-badge">
+                                @assessment.Status
+                            </span>
+                        </div>
+
+                        <p class="text-muted mb-4">
+                            Due on @assessment.DueDate.ToShortDateString()
+                        </p>
+
+                        <div class="mt-auto d-flex flex-wrap gap-2">
+                            <a asp-action="Details" asp-route-id="@assessment.Id" class="btn btn-outline-primary btn-sm">View</a>
+                            <a asp-action="Edit" asp-route-id="@assessment.Id" class="btn btn-outline-secondary btn-sm">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@assessment.Id" class="btn btn-outline-danger btn-sm">Delete</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
         }
-        </tbody>
-    </table>
+    </div>
 }
