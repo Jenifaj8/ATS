@@ -51,7 +51,7 @@ This project was built to give students a more organized way to manage their dea
 ## How to run the project?
 
 1. Clone the repository.
-2. Open the solution file in Visual Studio or JetBrains Rider.
+2. Open the solution file in any IDE of your choice.
 3. Restore the project dependencies.
 4. Update the database if needed.
 5. Run the web application.
