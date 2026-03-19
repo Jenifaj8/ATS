@@ -43,7 +43,7 @@ This project was built to give students a more organized way to manage their dea
 1. C#
 2. ASP.NET Core MVC
 3. Entity Framework Core
-4. SQL database support
+4. Postgres
 5. HTML
 6. CSS
 7. Bootstrap
