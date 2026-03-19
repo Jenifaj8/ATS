@@ -101,25 +101,29 @@ body {
 .dashboard-panel {
   height: 100%;
   padding: 1.5rem;
-  border: 1px solid #e5e7eb;
+  border: 2px solid #e5e7eb;
   border-radius: 1.25rem;
   background: #fff;
   box-shadow: 0 12px 30px rgba(15, 23, 42, 0.04);
 }
 
+.dashboard-stat-link {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
 .dashboard-stat-card {
   position: relative;
   overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
-.dashboard-stat-card::after {
-  content: "";
-  position: absolute;
-  inset: auto -20px -30px auto;
-  width: 90px;
-  height: 90px;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.35);
+.dashboard-stat-link:hover .dashboard-stat-card,
+.dashboard-stat-link:focus .dashboard-stat-card {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.09);
 }
 
 .dashboard-stat-card h2 {
@@ -140,27 +144,52 @@ body {
   display: inline-grid;
   place-items: center;
   font-size: 1.25rem;
-  background: rgba(255, 255, 255, 0.45);
+  background: #f8fafc;
 }
 
 .dashboard-stat-card.total {
-  background: linear-gradient(135deg, #e8f1ff 0%, #dceaff 100%);
+  border-color: #bfd6ff;
 }
 
 .dashboard-stat-card.courses {
-  background: linear-gradient(135deg, #eefbf3 0%, #dff7e8 100%);
+  border-color: #bfe5cb;
 }
 
 .dashboard-stat-card.not-started {
-  background: linear-gradient(135deg, #fff7e8 0%, #ffefcc 100%);
+  border-color: #f2d28b;
 }
 
 .dashboard-stat-card.in-progress {
-  background: linear-gradient(135deg, #eef5ff 0%, #dae8ff 100%);
+  border-color: #b8d0ff;
 }
 
 .dashboard-stat-card.completed {
-  background: linear-gradient(135deg, #ebfff4 0%, #d8fbe8 100%);
+  border-color: #9fd7b5;
+}
+
+.dashboard-stat-link:hover .dashboard-stat-card.total,
+.dashboard-stat-link:focus .dashboard-stat-card.total {
+  border-color: #7aa8ff;
+}
+
+.dashboard-stat-link:hover .dashboard-stat-card.courses,
+.dashboard-stat-link:focus .dashboard-stat-card.courses {
+  border-color: #78bf92;
+}
+
+.dashboard-stat-link:hover .dashboard-stat-card.not-started,
+.dashboard-stat-link:focus .dashboard-stat-card.not-started {
+  border-color: #d9aa35;
+}
+
+.dashboard-stat-link:hover .dashboard-stat-card.in-progress,
+.dashboard-stat-link:focus .dashboard-stat-card.in-progress {
+  border-color: #6f9dff;
+}
+
+.dashboard-stat-link:hover .dashboard-stat-card.completed,
+.dashboard-stat-link:focus .dashboard-stat-card.completed {
+  border-color: #4dad72;
 }
 
 .dashboard-panel-header {

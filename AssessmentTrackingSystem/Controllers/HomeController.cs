@@ -28,6 +28,18 @@ public class HomeController : Controller
         return View(vm);
     }
 
+    public async Task<IActionResult> AssessmentStatus(string status)
+    {
+        var assessments = await _context.Assessments
+            .Include(a => a.Course)
+            .Where(a => a.Status == status)
+            .OrderBy(a => a.DueDate)
+            .ToListAsync();
+
+        ViewBag.SelectedStatus = status;
+        return View(assessments);
+    }
+
     private async Task<DashboardViewModel> BuildDashboardViewModelAsync()
     {
         var today = DateTime.Today;

@@ -20,44 +20,56 @@
 </section>
 
 <section class="row g-4 mb-4">
-    <div class="col-12 col-md-6 col-xl">
-        <article class="dashboard-stat-card total">
-            <span class="dashboard-stat-icon"><i class="bi bi-clipboard-data"></i></span>
-            <p class="dashboard-stat-label">Total Assessments</p>
-            <h2>@Model.TotalAssessments</h2>
-        </article>
+    <div class="col-12 col-md-6">
+        <a asp-controller="Course" asp-action="Index" class="dashboard-stat-link">
+            <article class="dashboard-stat-card courses">
+                <span class="dashboard-stat-icon"><i class="bi bi-journal-bookmark"></i></span>
+                <p class="dashboard-stat-label">Total Courses</p>
+                <h2>@Model.TotalCourses</h2>
+            </article>
+        </a>
     </div>
 
-    <div class="col-12 col-md-6 col-xl">
-        <article class="dashboard-stat-card courses">
-            <span class="dashboard-stat-icon"><i class="bi bi-journal-bookmark"></i></span>
-            <p class="dashboard-stat-label">Total Courses</p>
-            <h2>@Model.TotalCourses</h2>
-        </article>
+    <div class="col-12 col-md-6">
+        <a asp-controller="Assessment" asp-action="Index" class="dashboard-stat-link">
+            <article class="dashboard-stat-card total">
+                <span class="dashboard-stat-icon"><i class="bi bi-clipboard-data"></i></span>
+                <p class="dashboard-stat-label">Total Assessments</p>
+                <h2>@Model.TotalAssessments</h2>
+            </article>
+        </a>
+    </div>
+</section>
+
+<section class="row g-4 mb-4">
+    <div class="col-12 col-md-4">
+        <a asp-action="AssessmentStatus" asp-route-status="Not Started" class="dashboard-stat-link">
+            <article class="dashboard-stat-card not-started">
+                <span class="dashboard-stat-icon"><i class="bi bi-hourglass-split"></i></span>
+                <p class="dashboard-stat-label">Not Started</p>
+                <h2>@Model.NotStartedCount</h2>
+            </article>
+        </a>
     </div>
 
-    <div class="col-12 col-md-6 col-xl">
-        <article class="dashboard-stat-card not-started">
-            <span class="dashboard-stat-icon"><i class="bi bi-hourglass-split"></i></span>
-            <p class="dashboard-stat-label">Not Started</p>
-            <h2>@Model.NotStartedCount</h2>
-        </article>
+    <div class="col-12 col-md-4">
+        <a asp-action="AssessmentStatus" asp-route-status="In Progress" class="dashboard-stat-link">
+            <article class="dashboard-stat-card in-progress">
+                <span class="dashboard-stat-icon"><i class="bi bi-arrow-repeat"></i></span>
+                <p class="dashboard-stat-label">In Progress</p>
+                <h2>@Model.InProgressCount</h2>
+            </article>
+        </a>
     </div>
 
-    <div class="col-12 col-md-6 col-xl">
-        <article class="dashboard-stat-card in-progress">
-            <span class="dashboard-stat-icon"><i class="bi bi-arrow-repeat"></i></span>
-            <p class="dashboard-stat-label">In Progress</p>
-            <h2>@Model.InProgressCount</h2>
-        </article>
-    </div>
-
-    <div class="col-12 col-md-6 col-xl">
-        <article class="dashboard-stat-card completed">
-            <span class="dashboard-stat-icon"><i class="bi bi-check-circle"></i></span>
-            <p class="dashboard-stat-label">Completed</p>
-            <h2>@Model.CompletedCount</h2>
-        </article>
+    <div class="col-12 col-md-4">
+        <a asp-action="AssessmentStatus" asp-route-status="Completed" class="dashboard-stat-link">
+            <article class="dashboard-stat-card completed">
+                <span class="dashboard-stat-icon"><i class="bi bi-check-circle"></i></span>
+                <p class="dashboard-stat-label">Completed</p>
+                <h2>@Model.CompletedCount</h2>
+            </article>
+        </a>
     </div>
 </section>
 
