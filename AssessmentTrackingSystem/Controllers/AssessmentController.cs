@@ -52,11 +52,6 @@ public class AssessmentController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create(Assessment assessment)
     {
-        if (assessment.DueDate < DateTime.Today)
-        {
-            ModelState.AddModelError("DueDate", "Due date cannot be in the past."); 
-        } //fixed backend part calendar 
-        
         if (!ModelState.IsValid)
         {
             await PopulateCoursesDropDownList(assessment.CourseId);
@@ -86,11 +81,6 @@ public class AssessmentController : Controller
     public async Task<IActionResult> Edit(int id, Assessment assessment)
     {
         if (id != assessment.Id) return NotFound();
-
-        if (assessment.DueDate < DateTime.Today)
-        {
-            ModelState.AddModelError("DueDate", "Due date cannot be in the past.");
-        }
 
         if (!ModelState.IsValid)
         {
@@ -154,5 +144,4 @@ public class AssessmentController : Controller
     {
         return _context.Assessments.Any(e => e.Id == id);
     }
-    
 }

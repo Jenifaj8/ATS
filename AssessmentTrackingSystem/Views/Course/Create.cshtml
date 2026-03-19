@@ -4,30 +4,24 @@
     ViewData["Title"] = "Add Course";
 }
 
-<section class="form-page-layout">
-    <div class="form-page-shell form-page-shell-wide">
-        <div class="form-page-panel">
-            <h1>Add Course</h1>
+<h1>Add Course</h1>
 
-            <form asp-action="Create" method="post">
-                <div class="mb-3">
-                    <label asp-for="Name" class="form-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="Code" class="form-label"></label>
-                    <input asp-for="Code" class="form-control" />
-                    <span asp-validation-for="Code" class="text-danger"></span>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Save</button>
-                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-            </form>
-        </div>
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
     </div>
-</section>
+
+    <div class="mb-3">
+        <label asp-for="Code" class="form-label"></label>
+        <input asp-for="Code" class="form-control" />
+        <span asp-validation-for="Code" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
