@@ -12,46 +12,46 @@
 <section class="calendar-shell">
     <aside class="calendar-sidebar">
         <div class="calendar-brand">
-            <div class="calendar-brand__icon">
+            <div class="calendar-brand-icon">
                 <i class="bi bi-calendar3"></i>
             </div>
             <div>
-                <p class="calendar-brand__eyebrow">Planner</p>
-                <h1 class="calendar-brand__title">Schedule</h1>
+                <p class="calendar-brand-eyebrow">This Week</p>
+                <h1 class="calendar-brand-title">Your Agenda</h1>
             </div>
         </div>
 
         <nav class="calendar-nav">
-            <a class="calendar-nav__link" asp-controller="Assessment" asp-action="Create">
+            <a class="calendar-nav-link" asp-controller="Assessment" asp-action="Create">
                 <i class="bi bi-plus-square"></i>
                 Add Task
             </a>
-            <a class="calendar-nav__link" asp-controller="Assessment" asp-action="Index">
+            <a class="calendar-nav-link" asp-controller="Assessment" asp-action="Index">
                 <i class="bi bi-journal-text"></i>
                 Assessments
             </a>
-            <a class="calendar-nav__link" asp-controller="Course" asp-action="Index">
+            <a class="calendar-nav-link" asp-controller="Course" asp-action="Index">
                 <i class="bi bi-book"></i>
                 Courses
             </a>
         </nav>
 
         <div class="calendar-summary">
-            <p class="calendar-summary__label">This Week</p>
-            <p class="calendar-summary__count">@Model.TaskSummaryLabel</p>
+            <p class="calendar-summary-label">This Week</p>
+            <p class="calendar-summary-count">@Model.TaskSummaryLabel</p>
         </div>
     </aside>
 
     <div class="calendar-board">
-        <header class="calendar-board__header">
+        <header class="calendar-board-header">
             <div>
-                <p class="calendar-board__eyebrow">Weekly Planner</p>
-                <h2 class="calendar-board__title">
+                <p class="calendar-board-eyebrow">Weekly Planner</p>
+                <h2 class="calendar-board-title">
                     @Model.WeekStart.ToString("MMMM d") - @Model.WeekEnd.ToString("MMMM d, yyyy")
                 </h2>
             </div>
 
-            <div class="calendar-board__actions">
+            <div class="calendar-board-actions">
                 <a class="calendar-action" asp-action="Index" asp-route-weekStart="@previousWeekRoute" aria-label="Previous week">
                     <i class="bi bi-chevron-left"></i>
                 </a>
@@ -67,22 +67,22 @@
         <div class="calendar-grid">
             @foreach (var day in Model.Days)
             {
-                <section class="calendar-day @(day.Date.Date == DateTime.Today ? "calendar-day--today" : string.Empty)">
-                    <header class="calendar-day__header">
-                        <p class="calendar-day__name">@day.Date.ToString("dddd")</p>
-                        <p class="calendar-day__date">@day.Date.ToString("MMM d")</p>
+                <section class="calendar-day @(day.Date.Date == DateTime.Today ? "calendar-day-today" : string.Empty)">
+                    <header class="calendar-day-header">
+                        <p class="calendar-day-name">@day.Date.ToString("dddd")</p>
+                        <p class="calendar-day-date">@day.Date.ToString("MMM d")</p>
                     </header>
 
-                    <div class="calendar-day__body">
+                    <div class="calendar-day-body">
                         @if (day.Items.Any())
                         {
                             foreach (var item in day.Items)
                             {
                                 <a class="calendar-item @item.AccentClass" asp-controller="Assessment" asp-action="Details" asp-route-id="@item.Id">
-                                    <p class="calendar-item__category">@item.Category</p>
-                                    <h3 class="calendar-item__title">@item.Title</h3>
-                                    <p class="calendar-item__course">@item.CourseName</p>
-                                    <div class="calendar-item__meta">
+                                    <p class="calendar-item-category">@item.Category</p>
+                                    <h3 class="calendar-item-title">@item.Title</h3>
+                                    <p class="calendar-item-course">@item.CourseName</p>
+                                    <div class="calendar-item-meta">
                                         <span>@item.Status</span>
                                     </div>
                                 </a>

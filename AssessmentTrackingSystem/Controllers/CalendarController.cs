@@ -79,12 +79,12 @@ namespace AssessmentTrackingSystem.Controllers
     {
       var normalizedName = name.Trim().ToLowerInvariant();
 
-      if (normalizedName.Contains("exam")) return "calendar-item--exam";
-      if (normalizedName.Contains("quiz")) return "calendar-item--quiz";
-      if (normalizedName.Contains("test")) return "calendar-item--test";
-      if (normalizedName.Contains("assignment")) return "calendar-item--assignment";
-      if (normalizedName.Contains("project")) return "calendar-item--project";
-      return "calendar-item--assessment";
+      if (normalizedName.Contains("exam")) return "calendar-item-exam";
+      if (normalizedName.Contains("quiz")) return "calendar-item-quiz";
+      if (normalizedName.Contains("test")) return "calendar-item-test";
+      if (normalizedName.Contains("assignment")) return "calendar-item-assignment";
+      if (normalizedName.Contains("project")) return "calendar-item-project";
+      return "calendar-item-assessment";
     }
   }
 }

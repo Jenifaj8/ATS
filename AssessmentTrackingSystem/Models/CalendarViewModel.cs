@@ -32,7 +32,7 @@ public class CalendarAssessmentItemViewModel
 
     public string Category { get; set; } = string.Empty;
 
-    public string AccentClass { get; set; } = "calendar-item--assignment";
+    public string AccentClass { get; set; } = "calendar-item-assignment";
 
     public DateTime DueDate { get; set; }
 }
