@@ -4,26 +4,57 @@
     ViewData["Title"] = "Add Course";
 }
 
-<section class="form-page-layout">
-    <div class="form-page-shell form-page-shell-wide">
-        <div class="form-page-panel">
-            <h1>Add Course</h1>
+<section class="form-page-shell form-page-shell--compact">
+    <div class="form-page-hero">
+        <div>
+            <div class="form-page-eyebrow">Course</div>
+            <h1 class="form-page-title">Add a course</h1>
+            <p class="form-page-subtitle mb-0">
+                Add your course name and code so your school work stays organized in one place.
+            </p>
+        </div>
+        <a asp-action="Index" class="btn btn-outline-primary form-page-back">
+            <i class="bi bi-arrow-left-short"></i>
+            Back to courses
+        </a>
+    </div>
 
-            <form asp-action="Create" method="post">
-                <div class="mb-3">
+    <div class="form-page-panel">
+        <div class="form-card">
+            <div class="form-card-header">
+                <div class="form-card-icon">
+                    <i class="bi bi-journal-plus"></i>
+                </div>
+                <div>
+                    <h2 class="form-card-title">Course details</h2>
+                    <p class="form-card-copy mb-0">Keep the information clear and easy to recognize later.</p>
+                </div>
+            </div>
+
+            <form asp-action="Create" method="post" class="form-page-form">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger form-validation-summary" role="alert"></div>
+
+                <div class="form-field">
                     <label asp-for="Name" class="form-label"></label>
-                    <input asp-for="Name" class="form-control" />
+                    <input asp-for="Name" class="form-control form-control-lg" placeholder="Example: Mobile App Development" />
+                    <div class="form-field-hint">Use the course name you would expect to see on your timetable or syllabus.</div>
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
 
-                <div class="mb-3">
+                <div class="form-field">
                     <label asp-for="Code" class="form-label"></label>
-                    <input asp-for="Code" class="form-control" />
+                    <input asp-for="Code" class="form-control form-control-lg" placeholder="Example: CSD214" />
+                    <div class="form-field-hint">Add the short course code so it is easier to spot in lists.</div>
                     <span asp-validation-for="Code" class="text-danger"></span>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Save</button>
-                <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="bi bi-check2-circle me-1"></i>
+                        Save course
+                    </button>
+                    <a asp-action="Index" class="btn btn-light btn-lg">Cancel</a>
+                </div>
             </form>
         </div>
     </div>
