@@ -4,6 +4,167 @@
     ViewData["Title"] = "Add Course";
 }
 
+<style>
+    .form-page-shell {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .form-page-shell--compact {
+        max-width: 980px;
+    }
+
+    .form-page-hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1.25rem;
+        padding: 1.75rem;
+        border: 1px solid rgba(147, 197, 253, 0.45);
+        border-radius: 1.5rem;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(238, 244, 255, 0.96) 58%, rgba(255, 248, 238, 0.96) 100%);
+        box-shadow: 0 20px 45px rgba(37, 99, 235, 0.08);
+    }
+
+    .form-page-eyebrow {
+        margin-bottom: 0.65rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #0b5ed7;
+    }
+
+    .form-page-title {
+        margin-bottom: 0.5rem;
+        font-size: clamp(2rem, 3vw, 2.65rem);
+        line-height: 1.05;
+    }
+
+    .form-page-subtitle {
+        max-width: 42rem;
+        color: #475569;
+        font-size: 1.02rem;
+    }
+
+    .form-page-back {
+        white-space: nowrap;
+        align-self: center;
+    }
+
+    .form-page-panel {
+        max-width: 760px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .form-card {
+        padding: 1.75rem;
+        border: 1px solid rgba(203, 213, 225, 0.95);
+        border-radius: 1.5rem;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+    }
+
+    .form-card-header {
+        display: flex;
+        align-items: start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-card-icon {
+        width: 3.25rem;
+        height: 3.25rem;
+        border-radius: 1rem;
+        display: inline-grid;
+        place-items: center;
+        flex-shrink: 0;
+        font-size: 1.3rem;
+        color: #fff;
+        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        box-shadow: 0 12px 30px rgba(37, 99, 235, 0.24);
+    }
+
+    .form-card-title {
+        margin-bottom: 0.35rem;
+        font-size: 1.35rem;
+    }
+
+    .form-card-copy {
+        color: #64748b;
+    }
+
+    .form-page-form {
+        display: grid;
+        gap: 1.25rem;
+    }
+
+    .form-validation-summary:empty {
+        display: none;
+    }
+
+    .form-validation-summary ul {
+        margin-bottom: 0;
+        padding-left: 1.1rem;
+    }
+
+    .form-field {
+        display: grid;
+        gap: 0.45rem;
+    }
+
+    .form-field .form-control {
+        border-radius: 1rem;
+        border-color: #d7dfeb;
+        background-color: #fbfdff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .form-field .form-control:hover {
+        border-color: #b7c7e6;
+    }
+
+    .form-field .form-control:focus {
+        transform: translateY(-1px);
+        background-color: #fff;
+    }
+
+    .form-field-hint {
+        color: #64748b;
+        font-size: 0.92rem;
+    }
+
+    .form-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        padding-top: 0.5rem;
+    }
+
+    @@media (max-width: 767.98px) {
+        .form-page-hero,
+        .form-card {
+            padding: 1.25rem;
+        }
+
+        .form-page-back {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .form-actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+
 <section class="form-page-shell form-page-shell--compact">
     <div class="form-page-hero">
         <div>
