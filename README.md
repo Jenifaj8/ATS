@@ -1,6 +1,6 @@
 # Assessment Tracking System (ATS)
 
-## About the project 📝
+## About the project 
 
 Assessment Tracking System, or ATS, is a web application created to help students keep track of their academic work in one place.
 
@@ -8,13 +8,13 @@ With ATS, students can create courses, add assessments like assignments, quizzes
 
 All information in the system is entered manually by students based on details shared by their instructors.
 
-## Why we built this? 💡
+## Why we built this? 
 
 Students often receive course information in many different places, such as course pages, emails, and class announcements. Because of that, it can be hard to see everything clearly in one view.
 
 This project was built to give students a more organized way to manage their deadlines and academic workload.
 
-## Main goals 🎯
+## Main goals
 
 1. Help students track assignments, quizzes, tests, exams, and other assessments in one place.
 2. Make it easier to see upcoming deadlines across different courses.
@@ -22,7 +22,7 @@ This project was built to give students a more organized way to manage their dea
 4. Help reduce missed deadlines and last minute stress.
 5. Give students a simple and clear way to monitor their progress.
 
-## Features ✨
+## Features
 
 1. Create and manage courses.
 2. Add assessments with names, due dates, and statuses.
@@ -31,14 +31,14 @@ This project was built to give students a more organized way to manage their dea
 5. See tasks in a calendar view.
 6. Keep academic information organized in one system.
 
-## Project structure 🗂️
+## Project structure
 
 1. `ATS.Core` contains the main domain entities and core logic.
 2. `ATS.Infrastructure` contains database-related code and migrations.
 3. `ATS.Tests` contains test files for the project.
 4. `AssessmentTrackingSystem` contains the ASP.NET MVC web application.
 
-## Technologies used 💻
+## Technologies used
 
 1. C#
 2. ASP.NET Core MVC
@@ -48,15 +48,15 @@ This project was built to give students a more organized way to manage their dea
 6. CSS
 7. Bootstrap
 
-## How to run the project 🚀
+## How to run the project?
 
 1. Clone the repository.
-2. Open the solution file in Visual Studio or JetBrains Rider.
+2. Open the solution file in any IDE of your choice.
 3. Restore the project dependencies.
 4. Update the database if needed.
 5. Run the web application.
 
-## Future improvements 🔮
+## Future improvements 
 
 1. Add reminder notifications.
 2. Allow students to attach notes, rubrics, and links to assessments.
