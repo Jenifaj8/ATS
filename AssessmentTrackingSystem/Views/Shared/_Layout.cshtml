@@ -9,6 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - AssessmentTrackingSystem</title>
+
     <script>
         (function () {
             var savedTheme = localStorage.getItem("app-theme");
@@ -17,51 +18,36 @@
             document.documentElement.setAttribute("data-theme", theme);
         })();
     </script>
+
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/AssessmentTrackingSystem.styles.css" asp-append-version="true" />
 </head>
 <body>
 <header>
-
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm app-navbar border-bottom box-shadow mb-3">
-
-    <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
-
         <div class="container-fluid">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index">
                 Assessment Tracking System
             </a>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-
-                        <a class="nav-link app-nav-link" asp-area="" asp-controller="Home" asp-action="Index">
-
-                        <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">
-
+                        <a class="nav-link app-nav-link" asp-controller="Home" asp-action="Index">
                             <i class="bi bi-house-door me-1"></i> Home
-                        </a>
                         </a>
                     </li>
 
                     <li class="nav-item">
-
-                        <a class="nav-link app-nav-link" asp-area="" asp-controller="Home" asp-action="Dashboard">
-
-                        <a class="nav-link text-dark" asp-controller="Home" asp-action="Dashboard">
-
+                        <a class="nav-link app-nav-link" asp-controller="Home" asp-action="Dashboard">
                             <i class="bi bi-grid-1x2 me-1"></i> Dashboard
-                        </a>
                         </a>
                     </li>
 
@@ -84,30 +70,25 @@
                     </li>
 
                     <li class="nav-item">
-
-                        <a class="nav-link app-nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
-
-                        <a class="nav-link text-dark" asp-controller="Home" asp-action="Privacy">
-
+                        <a class="nav-link app-nav-link" asp-controller="Home" asp-action="Privacy">
                             <i class="bi bi-shield-lock me-1"></i> Privacy
-                        </a>
                         </a>
                     </li>
                 </ul>
 
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-center">
                     @if (SignInManager.IsSignedIn(User))
                     {
                         var currentUser = await UserManager.GetUserAsync(User);
                         <li class="nav-item">
-                            <span class="nav-link text-dark">
+                            <span class="nav-link app-nav-link">
                                 Hi @(currentUser?.FirstName ?? User.Identity?.Name)
                             </span>
                         </li>
 
                         <li class="nav-item">
                             <form asp-area="Identity" asp-page="/Account/Logout" method="post">
-                                <button type="submit" class="nav-link btn btn-link text-dark border-0">
+                                <button type="submit" class="nav-link btn btn-link app-nav-link border-0">
                                     <i class="bi bi-box-arrow-right me-1"></i> Logout
                                 </button>
                             </form>
@@ -116,18 +97,23 @@
                     else
                     {
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                            <a class="nav-link app-nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                            <a class="nav-link app-nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
                         </li>
                     }
-                </ul>
 
+                    <li class="nav-item ms-2">
+                        <button type="button" class="btn app-theme-toggle" data-theme-toggle aria-label="Switch between light mode and dark mode">
+                            <i class="bi bi-moon-stars-fill" data-theme-icon></i>
+                            <span data-theme-label>Dark Mode</span>
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
-    </nav>
     </nav>
 </header>
 
@@ -137,23 +123,12 @@
     </main>
 </div>
 
-
 <footer class="border-top footer app-footer">
     <div class="container app-footer-content">
         <div>
-            &copy; 2026 - AssessmentTrackingSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2026 - AssessmentTrackingSystem -
+            <a asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-        <button type="button" class="btn app-theme-toggle" data-theme-toggle aria-label="Switch between light mode and dark mode">
-            <i class="bi bi-moon-stars-fill" data-theme-icon></i>
-            <span data-theme-label>Dark Mode</span>
-        </button>
-        
-
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2026 - AssessmentTrackingSystem -
-        <a asp-controller="Home" asp-action="Privacy">Privacy</a>
-
     </div>
 </footer>
 
@@ -161,7 +136,5 @@
 <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="~/js/site.js" asp-append-version="true"></script>
 @await RenderSectionAsync("Scripts", required: false)
-    </div>
-</footer>
 </body>
 </html>
