@@ -1,8 +1,49 @@
-﻿@{
+﻿@using ATS.Core.Entities
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome to the Assessment Tracking System Application</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Welcome to the Assessment Tracking System</h1>
+    <p class="lead">
+        Organize your courses, track your assessments, and stay on top of your deadlines.
+    </p>
 </div>
+
+<hr />
+
+@if (!SignInManager.IsSignedIn(User))
+{
+    <div class="card shadow-sm p-4 mt-4 text-center">
+        <h3>Get Started</h3>
+        <p>Create an account or log in to begin managing your courses and assessments.</p>
+
+        <div class="d-flex justify-content-center gap-3 mt-3">
+            <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary btn-lg">
+                Register
+            </a>
+            <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-outline-primary btn-lg">
+                Login
+            </a>
+        </div>
+    </div>
+}
+else
+{
+    var currentUser = await UserManager.GetUserAsync(User);
+
+    <div class="card shadow-sm p-4 mt-4 text-center">
+        <h3>Welcome back, @(currentUser?.FirstName ?? "User")! 👋</h3>
+        <p>You are logged in and ready to manage your assessments.</p>
+
+        <div class="mt-3">
+            <a asp-controller="Home" asp-action="Dashboard" class="btn btn-success btn-lg">
+                Go to Dashboard
+            </a>
+        </div>
+    </div>
+}
