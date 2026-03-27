@@ -2,6 +2,16 @@
 
 @{
     ViewData["Title"] = "Dashboard";
+
+    string GetStatusBadgeClass(string status)
+    {
+        return status switch
+        {
+            "In Progress" => "assessment-status-badge assessment-status-badge-in-progress",
+            "Completed" => "assessment-status-badge assessment-status-badge-completed",
+            _ => "assessment-status-badge assessment-status-badge-not-started"
+        };
+    }
 }
 
 <section class="dashboard-hero">
@@ -98,7 +108,7 @@
                                 <h4 class="h6 mb-1">@assessment.Name</h4>
                                 <p class="text-muted mb-0">@assessment.Course?.Code - @assessment.DueDate.ToString("MMM dd, yyyy")</p>
                             </div>
-                            <span class="badge bg-warning text-dark">@assessment.Status</span>
+                            <span class="@GetStatusBadgeClass(assessment.Status)">@assessment.Status</span>
                         </div>
                     }
                 </div>
@@ -130,7 +140,7 @@
                                 <h4 class="h6 mb-1">@assessment.Name</h4>
                                 <p class="text-muted mb-0">@assessment.Course?.Code - @assessment.DueDate.ToString("MMM dd, yyyy")</p>
                             </div>
-                            <span class="badge bg-danger text-white">@assessment.Status</span>
+                            <span class="@GetStatusBadgeClass(assessment.Status)">@assessment.Status</span>
                         </div>
                     }
                 </div>

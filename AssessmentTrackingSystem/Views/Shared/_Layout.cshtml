@@ -71,10 +71,6 @@
 
                 </ul>
 
-                <button type="button" class="btn app-theme-toggle" data-theme-toggle aria-label="Switch between light mode and dark mode">
-                    <i class="bi bi-moon-stars-fill" data-theme-icon></i>
-                    <span data-theme-label>Dark Mode</span>
-                </button>
             </div>
         </div>
     </nav>
@@ -87,8 +83,14 @@
 </div>
 
 <footer class="border-top footer app-footer">
-    <div class="container">
-        &copy; 2026 - AssessmentTrackingSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+    <div class="container app-footer-content">
+        <div>
+            &copy; 2026 - AssessmentTrackingSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+        <button type="button" class="btn app-theme-toggle" data-theme-toggle aria-label="Switch between light mode and dark mode">
+            <i class="bi bi-moon-stars-fill" data-theme-icon></i>
+            <span data-theme-label>Dark Mode</span>
+        </button>
     </div>
 </footer>
 
