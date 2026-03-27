@@ -1,47 +1,298 @@
 ﻿@model List<ATS.Core.Entities.Assessment>
 
+<style>
+    .assessment-index-shell {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: grid;
+        gap: 1.5rem;
+    }
+
+    .assessment-index-hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1.25rem;
+        flex-wrap: wrap;
+        padding: 1.75rem;
+        border: 1px solid rgba(147, 197, 253, 0.45);
+        border-radius: 1.5rem;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(238, 244, 255, 0.96) 58%, rgba(255, 248, 238, 0.96) 100%);
+        box-shadow: 0 20px 45px rgba(37, 99, 235, 0.08);
+    }
+
+    .assessment-index-eyebrow {
+        margin-bottom: 0.65rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #0b5ed7;
+    }
+
+    .assessment-index-title {
+        margin-bottom: 0.5rem;
+        font-size: clamp(2rem, 3vw, 2.65rem);
+        line-height: 1.05;
+    }
+
+    .assessment-index-subtitle {
+        max-width: 42rem;
+        margin-bottom: 0;
+        color: #475569;
+        font-size: 1.02rem;
+    }
+
+    .assessment-index-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+    }
+
+    .assessment-index-panel {
+        max-width: 980px;
+        width: 100%;
+        margin: 0 auto;
+        border: 1px solid rgba(203, 213, 225, 0.95);
+        border-radius: 1.5rem;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+        overflow: hidden;
+    }
+
+    .assessment-index-panel-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+        padding: 1.5rem 1.75rem 1rem;
+    }
+
+    .assessment-index-panel-title {
+        margin-bottom: 0.2rem;
+        font-size: 1.25rem;
+    }
+
+    .assessment-index-panel-copy {
+        margin-bottom: 0;
+        color: #64748b;
+    }
+
+    .assessment-index-table-wrap {
+        padding: 0 1rem 1rem;
+        overflow-x: auto;
+    }
+
+    .assessment-index-table {
+        margin-bottom: 0;
+        min-width: 720px;
+        vertical-align: middle;
+    }
+
+    .assessment-index-table thead th {
+        padding: 0.95rem 1rem;
+        border-bottom-width: 1px;
+        color: #475569;
+        font-size: 0.82rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .assessment-index-table tbody tr {
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .assessment-index-table tbody tr:hover {
+        background: #f8fbff;
+    }
+
+    .assessment-index-table td {
+        padding: 1rem;
+        border-color: #e2e8f0;
+    }
+
+    .assessment-index-name {
+        font-weight: 600;
+        color: #1e293b;
+    }
+
+    .assessment-index-course {
+        color: #64748b;
+    }
+
+    .assessment-index-status {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 120px;
+        padding: 0.45rem 0.8rem;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+    }
+
+    .assessment-index-status--not-started {
+        background: #fff3cd;
+        color: #946200;
+    }
+
+    .assessment-index-status--in-progress {
+        background: #dbeafe;
+        color: #1d4ed8;
+    }
+
+    .assessment-index-status--completed {
+        background: #dcfce7;
+        color: #166534;
+    }
+
+    .assessment-index-status--default {
+        background: #e2e8f0;
+        color: #334155;
+    }
+
+    .assessment-index-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+    }
+
+    .assessment-index-link {
+        text-decoration: none;
+        font-weight: 600;
+    }
+
+    .assessment-index-empty {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+        border: 1px dashed #cbd5e1;
+        border-radius: 1.25rem;
+        background: linear-gradient(135deg, #f8fbff 0%, #eef4ff 100%);
+        text-align: center;
+    }
+
+    .assessment-index-empty-icon {
+        width: 4rem;
+        height: 4rem;
+        margin: 0 auto 1rem;
+        border-radius: 999px;
+        display: grid;
+        place-items: center;
+        font-size: 1.5rem;
+        color: #0d6efd;
+        background: rgba(13, 110, 253, 0.12);
+    }
+
+    @@media (max-width: 767.98px) {
+        .assessment-index-hero {
+            padding: 1.25rem;
+        }
+
+        .assessment-index-actions {
+            width: 100%;
+        }
+
+        .assessment-index-actions .btn {
+            flex: 1 1 100%;
+        }
+
+        .assessment-index-panel-header {
+            padding: 1.25rem 1.25rem 0.85rem;
+        }
+
+        .assessment-index-table-wrap {
+            padding: 0 0.75rem 0.75rem;
+        }
+    }
+</style>
 @{
     ViewData["Title"] = "Assessments";
 }
 
-<h1>Assessments</h1>
+<section class="assessment-index-shell">
+    <div class="assessment-index-hero">
+        <div>
+            <div class="assessment-index-eyebrow">Assessment</div>
+            <h1 class="assessment-index-title">Your assessments</h1>
+            <p class="assessment-index-subtitle">Keep track of assignments, quizzes, tests, and exams in one organized view.</p>
+        </div>
 
-<p>
-    <a asp-action="Create" class="btn btn-primary">Add Assessment</a>
-    <a asp-controller="Calendar" asp-action="Index" class="btn btn-outline-primary ms-2">Open Calendar</a>
-</p>
+        <div class="assessment-index-actions">
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="bi bi-plus-lg me-1"></i>Add Assessment
+            </a>
+            <a asp-controller="Calendar" asp-action="Index" class="btn btn-outline-primary">
+                <i class="bi bi-calendar-week me-1"></i>Open Calendar
+            </a>
+        </div>
+    </div>
 
-@if (!Model.Any())
-{
-    <p>No assessments found.</p>
-}
-else
-{
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Course</th>
-            <th>Due Date</th>
-            <th>Status</th>
-            <th></th>
-        </tr>
-        </thead>
-        <tbody>
-        @foreach (var assessment in Model)
-        {
-            <tr>
-                <td>@assessment.Name</td>
-                <td>@assessment.Course?.Name</td>
-                <td>@assessment.DueDate.ToShortDateString()</td>
-                <td>@assessment.Status</td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@assessment.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@assessment.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@assessment.Id">Delete</a>
-                </td>
-            </tr>
-        }
-        </tbody>
-    </table>
-}
+    @if (!Model.Any())
+    {
+        <div class="assessment-index-empty">
+            <div class="assessment-index-empty-icon">
+                <i class="bi bi-clipboard-check"></i>
+            </div>
+            <h2>No assessments yet</h2>
+            <p class="text-muted">Add your first assessment and it will show up here with its due date and current status.</p>
+            <a asp-action="Create" class="btn btn-primary">Create First Assessment</a>
+        </div>
+    }
+    else
+    {
+        <div class="assessment-index-panel">
+            <div class="assessment-index-panel-header">
+                <div>
+                    <h2 class="assessment-index-panel-title">Assessment list</h2>
+                    <p class="assessment-index-panel-copy">Review deadlines, course names, and progress at a glance.</p>
+                </div>
+                <span class="badge rounded-pill text-bg-light">@Model.Count @(Model.Count == 1 ? "item" : "items")</span>
+            </div>
+
+            <div class="assessment-index-table-wrap">
+                <table class="table assessment-index-table">
+                    <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Course</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @foreach (var assessment in Model)
+                    {
+                        var statusClass = assessment.Status switch
+                        {
+                            "Not Started" => "assessment-index-status--not-started",
+                            "In Progress" => "assessment-index-status--in-progress",
+                            "Completed" => "assessment-index-status--completed",
+                            _ => "assessment-index-status--default"
+                        };
+
+                        <tr>
+                            <td class="assessment-index-name">@assessment.Name</td>
+                            <td class="assessment-index-course">@assessment.Course?.Name</td>
+                            <td>@assessment.DueDate.ToShortDateString()</td>
+                            <td>
+                                <span class="assessment-index-status @statusClass">@assessment.Status</span>
+                            </td>
+                            <td>
+                                <div class="assessment-index-links">
+                                    <a asp-action="Edit" asp-route-id="@assessment.Id" class="assessment-index-link text-primary">Edit</a>
+                                    <a asp-action="Details" asp-route-id="@assessment.Id" class="assessment-index-link text-secondary">Details</a>
+                                    <a asp-action="Delete" asp-route-id="@assessment.Id" class="assessment-index-link text-danger">Delete</a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+</section>

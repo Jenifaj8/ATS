@@ -4,36 +4,255 @@
     ViewData["Title"] = "Edit Assessment";
 }
 
-<h1>Edit Assessment</h1>
+<style>
+    .form-page-shell {
+        max-width: 1080px;
+        margin: 0 auto;
+        display: grid;
+        gap: 1.5rem;
+    }
 
-<form asp-action="Edit" method="post">
-    <input type="hidden" asp-for="Id" />
+    .form-page-shell--compact {
+        max-width: 980px;
+    }
 
-    <div class="mb-3">
-        <label asp-for="Name" class="form-label"></label>
-        <input asp-for="Name" class="form-control" />
-        <span asp-validation-for="Name" class="text-danger"></span>
+    .form-page-hero {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 1.25rem;
+        padding: 1.75rem;
+        border: 1px solid rgba(147, 197, 253, 0.45);
+        border-radius: 1.5rem;
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(238, 244, 255, 0.96) 58%, rgba(255, 248, 238, 0.96) 100%);
+        box-shadow: 0 20px 45px rgba(37, 99, 235, 0.08);
+    }
+
+    .form-page-eyebrow {
+        margin-bottom: 0.65rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #0b5ed7;
+    }
+
+    .form-page-title {
+        margin-bottom: 0.5rem;
+        font-size: clamp(2rem, 3vw, 2.65rem);
+        line-height: 1.05;
+    }
+
+    .form-page-subtitle {
+        max-width: 42rem;
+        color: #475569;
+        font-size: 1.02rem;
+        margin-bottom: 0;
+    }
+
+    .form-page-back {
+        white-space: nowrap;
+        align-self: center;
+    }
+
+    .form-page-panel {
+        max-width: 760px;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .form-card {
+        padding: 1.75rem;
+        border: 1px solid rgba(203, 213, 225, 0.95);
+        border-radius: 1.5rem;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+    }
+
+    .form-card-header {
+        display: flex;
+        align-items: start;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .form-card-icon {
+        width: 3.25rem;
+        height: 3.25rem;
+        border-radius: 1rem;
+        display: inline-grid;
+        place-items: center;
+        flex-shrink: 0;
+        font-size: 1.3rem;
+        color: #fff;
+        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        box-shadow: 0 12px 30px rgba(37, 99, 235, 0.24);
+    }
+
+    .form-card-title {
+        margin-bottom: 0.35rem;
+        font-size: 1.35rem;
+    }
+
+    .form-card-copy {
+        color: #64748b;
+        margin-bottom: 0;
+    }
+
+    .form-page-form {
+        display: grid;
+        gap: 1.25rem;
+    }
+
+    .form-validation-summary:empty {
+        display: none;
+    }
+
+    .form-validation-summary ul {
+        margin-bottom: 0;
+        padding-left: 1.1rem;
+    }
+
+    .form-field {
+        display: grid;
+        gap: 0.45rem;
+    }
+
+    .form-field-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+
+    .form-field .form-control,
+    .form-field .form-select {
+        border-radius: 1rem;
+        border-color: #d7dfeb;
+        background-color: #fbfdff;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .form-field .form-control:hover,
+    .form-field .form-select:hover {
+        border-color: #b7c7e6;
+    }
+
+    .form-field .form-control:focus,
+    .form-field .form-select:focus {
+        transform: translateY(-1px);
+        background-color: #fff;
+    }
+
+    .form-field-hint {
+        color: #64748b;
+        font-size: 0.92rem;
+    }
+
+    .form-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        padding-top: 0.5rem;
+    }
+
+    @@media (max-width: 767.98px) {
+        .form-field-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .form-page-hero,
+        .form-card {
+            padding: 1.25rem;
+        }
+
+        .form-page-back {
+            width: 100%;
+            justify-content: center;
+        }
+
+        .form-actions {
+            flex-direction: column;
+        }
+
+        .form-actions .btn {
+            width: 100%;
+        }
+    }
+</style>
+
+<section class="form-page-shell form-page-shell--compact">
+    <div class="form-page-hero">
+        <div>
+            <div class="form-page-eyebrow">Assessment</div>
+            <h1 class="form-page-title">Edit assessment</h1>
+            <p class="form-page-subtitle">Update the name, course, due date, or status so everything stays current.</p>
+        </div>
+        <a asp-action="Index" class="btn btn-outline-primary form-page-back">
+            <i class="bi bi-arrow-left-short"></i>
+            Back to assessments
+        </a>
     </div>
 
-    <div class="mb-3">
-        <label asp-for="CourseId" class="form-label">Course</label>
-        <select asp-for="CourseId" class="form-control" asp-items="ViewBag.CourseId"></select>
-    </div>
+    <div class="form-page-panel">
+        <div class="form-card">
+            <div class="form-card-header">
+                <div class="form-card-icon">
+                    <i class="bi bi-pencil-square"></i>
+                </div>
+                <div>
+                    <h2 class="form-card-title">Assessment details</h2>
+                    <p class="form-card-copy">Make changes here and save when everything looks right.</p>
+                </div>
+            </div>
 
-    <div class="mb-3">
-        <label class="form-label">Due Date</label>
-        <input asp-for="DueDate" type="date" class="form-control" />
-    </div>
+            <form asp-action="Edit" method="post" class="form-page-form">
+                <input type="hidden" asp-for="Id" />
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger form-validation-summary" role="alert"></div>
 
-    <div class="mb-3">
-        <label asp-for="Status" class="form-label"></label>
-        <select asp-for="Status" class="form-control">
-            <option>Not Started</option>
-            <option>In Progress</option>
-            <option>Completed</option>
-        </select>
-    </div>
+                <div class="form-field">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control form-control-lg" placeholder="Example: Midterm Presentation" />
+                    <div class="form-field-hint">Use the name that will make the most sense when you see it later in your list or calendar.</div>
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
 
-    <button type="submit" class="btn btn-primary">Save Changes</button>
-    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
-</form>
+                <div class="form-field form-field-grid">
+                    <div>
+                        <label asp-for="CourseId" class="form-label">Course</label>
+                        <select asp-for="CourseId" class="form-select form-select-lg" asp-items="ViewBag.CourseId"></select>
+                        <div class="form-field-hint">Choose the course this assessment belongs to.</div>
+                        <span asp-validation-for="CourseId" class="text-danger"></span>
+                    </div>
+
+                    <div>
+                        <label class="form-label">Due Date</label>
+                        <input asp-for="DueDate" type="date" class="form-control form-control-lg" />
+                        <div class="form-field-hint">Adjust the date if the deadline has changed.</div>
+                        <span asp-validation-for="DueDate" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label asp-for="Status" class="form-label"></label>
+                    <select asp-for="Status" class="form-select form-select-lg">
+                        <option>Not Started</option>
+                        <option>In Progress</option>
+                        <option>Completed</option>
+                    </select>
+                    <div class="form-field-hint">Pick the option that matches your current progress.</div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-lg">
+                        <i class="bi bi-check2-circle me-1"></i>
+                        Save changes
+                    </button>
+                    <a asp-action="Index" class="btn btn-light btn-lg">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
