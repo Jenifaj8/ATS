@@ -1,9 +1,10 @@
 ﻿using ATS.Core.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace ATS.Infrastructure.Data;
 
-public class AtsDbContext : DbContext
+public class AtsDbContext : IdentityDbContext<ApplicationUser>
 {
     public AtsDbContext(DbContextOptions<AtsDbContext> options)
         : base(options)
@@ -11,17 +12,14 @@ public class AtsDbContext : DbContext
     }
 
     public DbSet<Course> Courses { get; set; }
-
     public DbSet<Assessment> Assessments { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
 
-        // Fix PostgreSQL DateTime issue
         modelBuilder.Entity<Assessment>()
             .Property(a => a.DueDate)
             .HasColumnType("timestamp without time zone");
     }
 }
-// Testinggggggg
