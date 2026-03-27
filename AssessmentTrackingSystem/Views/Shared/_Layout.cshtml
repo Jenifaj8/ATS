@@ -4,6 +4,14 @@
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>@ViewData["Title"] - AssessmentTrackingSystem</title>
+    <script>
+        (function () {
+            var savedTheme = localStorage.getItem("app-theme");
+            var prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+            var theme = savedTheme || (prefersDark ? "dark" : "light");
+            document.documentElement.setAttribute("data-theme", theme);
+        })();
+    </script>
     <script type="importmap"></script>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css"/>
 
@@ -15,7 +23,7 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <nav class="navbar navbar-expand-sm navbar-toggleable-sm app-navbar border-bottom box-shadow mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Assessment Tracking System</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -26,42 +34,47 @@
                 <ul class="navbar-nav flex-grow-1">
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">
+                        <a class="nav-link app-nav-link" asp-area="" asp-controller="Home" asp-action="Index">
                             <i class="bi bi-house-door me-1"></i> Home
                         </a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Dashboard">
+                        <a class="nav-link app-nav-link" asp-area="" asp-controller="Home" asp-action="Dashboard">
                             <i class="bi bi-grid-1x2 me-1"></i> Dashboard
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="Course" asp-action="Index">
+                        <a class="nav-link app-nav-link" asp-controller="Course" asp-action="Index">
                             <i class="bi bi-journal-bookmark me-1"></i> Courses
                         </a>
                     </li>
                     
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="Assessment" asp-action="Index">
+                        <a class="nav-link app-nav-link" asp-controller="Assessment" asp-action="Index">
                             <i class="bi bi-clipboard-check me-1"></i> Assessments
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-controller="Calendar" asp-action="Index">
+                        <a class="nav-link app-nav-link" asp-controller="Calendar" asp-action="Index">
                             <i class="bi bi-calendar-week me-1"></i> Calendar
                         </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">
+                        <a class="nav-link app-nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">
                             <i class="bi bi-shield-lock me-1"></i> Privacy
                         </a>
                     </li>
 
                 </ul>
+
+                <button type="button" class="btn app-theme-toggle" data-theme-toggle aria-label="Switch between light mode and dark mode">
+                    <i class="bi bi-moon-stars-fill" data-theme-icon></i>
+                    <span data-theme-label>Dark Mode</span>
+                </button>
             </div>
         </div>
     </nav>
@@ -73,7 +86,7 @@
     </main>
 </div>
 
-<footer class="border-top footer text-muted">
+<footer class="border-top footer app-footer">
     <div class="container">
         &copy; 2026 - AssessmentTrackingSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
     </div>
