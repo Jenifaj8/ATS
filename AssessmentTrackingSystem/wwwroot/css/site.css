@@ -990,3 +990,69 @@ html[data-theme="dark"] .dashboard-stat-icon {
         grid-template-columns: 1fr;
     }
 }
+.home-hero {
+    background: linear-gradient(135deg, #eef4ff 0%, #dde9ff 100%);
+    padding: 70px 20px;
+    border-radius: 0 0 18px 18px;
+    margin-bottom: 10px;
+}
+
+.home-hero h1 {
+    color: #1f2a44;
+}
+
+.home-hero p {
+    color: #44506b;
+    font-size: 1.25rem;
+}
+
+.feature-box {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 30px 20px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-4px);
+}
+
+.feature-icon {
+    font-size: 2.2rem;
+    color: #0d6efd;
+}
+
+.home-card {
+    background-color: #ffffff;
+    border-radius: 18px;
+    padding: 45px 25px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+    margin-bottom: 40px;
+}
+
+.home-card p {
+    font-size: 1.1rem;
+    color: #4b5563;
+}
+.action-card {
+    display: block;
+    background: #ffffff;
+    padding: 30px 20px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    transition: all 0.2s ease;
+    color: inherit;
+}
+
+.action-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.12);
+}
+
+.action-icon {
+    font-size: 2.2rem;
+    color: #0d6efd;
+}
+
