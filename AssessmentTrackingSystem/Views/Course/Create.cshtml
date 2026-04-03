@@ -150,6 +150,11 @@
             padding: 1.25rem;
         }
 
+        .form-card-header {
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
         .form-page-back {
             width: 100%;
             justify-content: center;
@@ -161,6 +166,18 @@
 
         .form-actions .btn {
             width: 100%;
+        }
+    }
+
+    @@media (max-width: 575.98px) {
+        .form-page-title {
+            font-size: 1.9rem;
+        }
+
+        .form-page-subtitle,
+        .form-card-copy,
+        .form-field-hint {
+            font-size: 0.95rem;
         }
     }
 </style>

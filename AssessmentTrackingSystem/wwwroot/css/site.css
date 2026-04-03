@@ -124,6 +124,10 @@ a {
   padding-top: 1rem;
 }
 
+.navbar-collapse {
+  gap: 1rem;
+}
+
 .card,
 .dashboard-panel,
 .dashboard-stat-card,
@@ -163,6 +167,23 @@ a {
 .btn-outline-secondary,
 .btn-outline-danger {
   border-color: var(--app-border-color);
+}
+
+.navbar-toggler {
+  background: rgba(255, 255, 255, 0.92);
+}
+
+.navbar-toggler-icon {
+  filter: brightness(0.2);
+}
+
+html[data-theme="dark"] .navbar-toggler {
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(226, 232, 240, 0.42);
+}
+
+html[data-theme="dark"] .navbar-toggler-icon {
+  filter: brightness(0) invert(1);
 }
 
 html[data-theme="dark"] .btn-secondary {
@@ -1056,3 +1077,188 @@ html[data-theme="dark"] .dashboard-stat-icon {
     color: #0d6efd;
 }
 
+@media (max-width: 991.98px) {
+    .navbar-brand {
+        font-size: 1.15rem;
+        line-height: 1.2;
+        max-width: 220px;
+        white-space: normal;
+    }
+
+    .navbar-collapse {
+        padding-top: 1rem;
+    }
+
+    .navbar-nav.ms-auto {
+        align-items: stretch !important;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+        width: 100%;
+    }
+
+    .navbar-nav.ms-auto .nav-item {
+        margin-left: 0 !important;
+    }
+
+    .app-theme-toggle {
+        justify-content: center;
+        width: 100%;
+    }
+
+    .home-hero {
+        padding: 56px 20px;
+    }
+
+    .home-hero h1 {
+        font-size: clamp(2.4rem, 7vw, 4rem);
+    }
+
+    .home-card {
+        padding: 36px 22px;
+    }
+
+    .dashboard-panel-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .calendar-sidebar {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .calendar-brand-title {
+        font-size: clamp(2rem, 6vw, 3.25rem);
+    }
+
+    .calendar-board-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .calendar-board-actions,
+    .calendar-footer-actions {
+        width: 100%;
+    }
+
+    .calendar-footer-actions {
+        justify-content: stretch;
+    }
+
+    .calendar-footer-actions .calendar-action-home {
+        justify-content: center;
+        width: 100%;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.05rem;
+        max-width: 180px;
+    }
+
+    .app-footer-content {
+        align-items: stretch;
+    }
+
+    .home-hero {
+        padding: 44px 16px;
+    }
+
+    .home-hero p {
+        font-size: 1rem;
+    }
+
+    .feature-box,
+    .action-card {
+        padding: 24px 18px;
+    }
+
+    .home-card {
+        padding: 28px 18px;
+    }
+
+    .home-card .btn,
+    .home-card .btn-lg {
+        width: 100%;
+    }
+
+    .assessment-status-badge {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .course-page-header .btn {
+        width: 100%;
+    }
+
+    .calendar-brand {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .calendar-board {
+        border-radius: 22px;
+    }
+
+    .calendar-board-header,
+    .calendar-footer-actions {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .calendar-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .calendar-day {
+        min-height: 0;
+        padding: 0.9rem;
+    }
+
+    .calendar-item {
+        min-height: 108px;
+        padding: 0.9rem;
+    }
+
+    .navbar-nav.ms-auto .dropdown,
+    .navbar-nav.ms-auto .dropdown-toggle,
+    .navbar-nav.ms-auto .dropdown-menu {
+        width: 100%;
+    }
+
+    .navbar-nav.ms-auto .dropdown-toggle {
+        text-align: left;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .navbar-brand {
+        max-width: 155px;
+    }
+
+    .home-hero h1 {
+        font-size: clamp(2rem, 9vw, 2.8rem);
+    }
+
+    .calendar-board-actions {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .calendar-action {
+        padding: 0.7rem 0.75rem;
+    }
+
+    .calendar-day-name {
+        font-size: 0.88rem;
+    }
+
+    .calendar-day-date {
+        font-size: 1.1rem;
+    }
+}
