@@ -15,15 +15,10 @@ document.addEventListener("DOMContentLoaded", function () {
         localStorage.setItem("app-theme", theme);
 
         themeToggleButtons.forEach(function (button) {
-            var themeIcon = button.querySelector("[data-theme-icon]");
-            var themeLabel = button.querySelector("[data-theme-label]");
+            var icon = button.querySelector("[data-theme-icon]");
 
-            if (themeIcon) {
-                themeIcon.className = isDarkMode ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
-            }
-
-            if (themeLabel) {
-                themeLabel.textContent = isDarkMode ? "Light Mode" : "Dark Mode";
+            if (icon) {
+                icon.className = isDarkMode ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
             }
 
             button.setAttribute(
@@ -38,11 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     themeToggleButtons.forEach(function (button) {
         button.addEventListener("click", function () {
-            var nextTheme =
-                document.documentElement.getAttribute("data-theme") === "dark"
-                    ? "light"
-                    : "dark";
-
+            var nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
             applyTheme(nextTheme);
         });
     });
