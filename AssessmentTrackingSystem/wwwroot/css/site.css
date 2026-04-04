@@ -126,6 +126,20 @@ a {
   padding-top: 1rem;
 }
 
+.app-theme-menu-wrap {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.35rem 0;
+}
+
+.app-theme-menu-label {
+  color: var(--app-text-color);
+  font-size: 0.95rem;
+  font-weight: 600;
+  margin-right: 0.75rem;
+}
+
 .card,
 .dashboard-panel,
 .dashboard-stat-card,

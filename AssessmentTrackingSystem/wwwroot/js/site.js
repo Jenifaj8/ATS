@@ -2,10 +2,9 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 document.addEventListener("DOMContentLoaded", function () {
-    var themeToggleButton = document.querySelector("[data-theme-toggle]");
-    var themeIcon = document.querySelector("[data-theme-icon]");
+    var themeToggleButtons = document.querySelectorAll("[data-theme-toggle]");
 
-    if (!themeToggleButton || !themeIcon) {
+    if (!themeToggleButtons.length) {
         return;
     }
 
@@ -15,18 +14,27 @@ document.addEventListener("DOMContentLoaded", function () {
         document.documentElement.setAttribute("data-theme", theme);
         localStorage.setItem("app-theme", theme);
 
-        themeIcon.className = isDarkMode ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
-        themeToggleButton.setAttribute(
-            "aria-label",
-            isDarkMode ? "Switch to light mode" : "Switch to dark mode"
-        );
+        themeToggleButtons.forEach(function (button) {
+            var icon = button.querySelector("[data-theme-icon]");
+
+            if (icon) {
+                icon.className = isDarkMode ? "bi bi-sun-fill" : "bi bi-moon-stars-fill";
+            }
+
+            button.setAttribute(
+                "aria-label",
+                isDarkMode ? "Switch to light mode" : "Switch to dark mode"
+            );
+        });
     }
 
     var currentTheme = document.documentElement.getAttribute("data-theme") || "light";
     applyTheme(currentTheme);
 
-    themeToggleButton.addEventListener("click", function () {
-        var nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
-        applyTheme(nextTheme);
+    themeToggleButtons.forEach(function (button) {
+        button.addEventListener("click", function () {
+            var nextTheme = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+            applyTheme(nextTheme);
+        });
     });
 });

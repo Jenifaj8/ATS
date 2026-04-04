@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@using ATS.Core.Entities
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
@@ -71,6 +76,59 @@
 
                 </ul>
 
+                <ul class="navbar-nav ms-auto align-items-center">
+                    @if (SignInManager.IsSignedIn(User))
+                    {
+                        var currentUser = await UserManager.GetUserAsync(User);
+                        <li class="nav-item dropdown">
+                            <a class="nav-link app-nav-link dropdown-toggle" href="#" id="user-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="bi bi-person-circle me-1"></i> @(currentUser?.FirstName ?? User.Identity?.Name)
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-menu">
+                                <li>
+                                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/Index">
+                                        <i class="bi bi-person me-1"></i> Profile
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" asp-area="Identity" asp-page="/Account/Manage/ChangePassword">
+                                        <i class="bi bi-key me-1"></i> Change Password
+                                    </a>
+                                </li>
+                                <li>
+                                    <div class="dropdown-item-text app-theme-menu-wrap">
+                                        <span class="app-theme-menu-label">Theme</span>
+                                        <button type="button" class="btn app-theme-toggle" data-theme-toggle aria-label="Switch between light mode and dark mode">
+                                            <i class="bi bi-moon-stars-fill" data-theme-icon></i>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li><hr class="dropdown-divider" /></li>
+                                <li>
+                                    <form asp-area="Identity" asp-page="/Account/Logout" method="post">
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="bi bi-box-arrow-right me-1"></i> Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a class="nav-link app-nav-link" asp-area="Identity" asp-page="/Account/Register">Register</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link app-nav-link" asp-area="Identity" asp-page="/Account/Login">Login</a>
+                        </li>
+                        <li class="nav-item ms-sm-2">
+                            <button type="button" class="btn app-theme-toggle" data-theme-toggle aria-label="Switch between light mode and dark mode">
+                                <i class="bi bi-moon-stars-fill" data-theme-icon></i>
+                            </button>
+                        </li>
+                    }
+                </ul>
             </div>
         </div>
     </nav>
@@ -87,9 +145,6 @@
         <div>
             &copy; 2026 - AssessmentTrackingSystem - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-        <button type="button" class="btn app-theme-toggle" data-theme-toggle aria-label="Switch between light mode and dark mode">
-            <i class="bi bi-moon-stars-fill" data-theme-icon></i>
-        </button>
     </div>
 </footer>
 
