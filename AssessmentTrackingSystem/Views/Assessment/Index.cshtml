@@ -19,6 +19,7 @@
         border-radius: 1.5rem;
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(238, 244, 255, 0.96) 58%, rgba(255, 248, 238, 0.96) 100%);
         box-shadow: 0 20px 45px rgba(37, 99, 235, 0.08);
+        color: var(--app-text-color);
     }
 
     .assessment-index-eyebrow {
@@ -39,7 +40,7 @@
     .assessment-index-subtitle {
         max-width: 42rem;
         margin-bottom: 0;
-        color: #475569;
+        color: var(--app-muted-color);
         font-size: 1.02rem;
     }
 
@@ -50,14 +51,13 @@
     }
 
     .assessment-index-panel {
-        max-width: 980px;
         width: 100%;
-        margin: 0 auto;
         border: 1px solid rgba(203, 213, 225, 0.95);
         border-radius: 1.5rem;
         background: rgba(255, 255, 255, 0.94);
         box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
         overflow: hidden;
+        color: var(--app-text-color);
     }
 
     .assessment-index-panel-header {
@@ -76,7 +76,7 @@
 
     .assessment-index-panel-copy {
         margin-bottom: 0;
-        color: #64748b;
+        color: var(--app-muted-color);
     }
 
     .assessment-index-table-wrap {
@@ -93,7 +93,7 @@
     .assessment-index-table thead th {
         padding: 0.95rem 1rem;
         border-bottom-width: 1px;
-        color: #475569;
+        color: var(--app-muted-color);
         font-size: 0.82rem;
         font-weight: 700;
         letter-spacing: 0.06em;
@@ -115,11 +115,11 @@
 
     .assessment-index-name {
         font-weight: 600;
-        color: #1e293b;
+        color: var(--app-text-color);
     }
 
     .assessment-index-course {
-        color: #64748b;
+        color: var(--app-muted-color);
     }
 
     .assessment-index-status {
@@ -172,6 +172,7 @@
         border-radius: 1.25rem;
         background: linear-gradient(135deg, #f8fbff 0%, #eef4ff 100%);
         text-align: center;
+        color: var(--app-text-color);
     }
 
     .assessment-index-empty-icon {
@@ -238,27 +239,43 @@
     html[data-theme="dark"] .assessment-index-hero,
     html[data-theme="dark"] .assessment-index-panel,
     html[data-theme="dark"] .assessment-index-empty {
-        background: rgba(255, 255, 255, 0.96);
-        color: #182033;
+        background: rgba(17, 24, 39, 0.96);
+        border-color: #334155;
+        box-shadow: 0 14px 30px rgba(2, 6, 23, 0.28);
+        color: #e5ecff;
     }
 
     html[data-theme="dark"] .assessment-index-title,
     html[data-theme="dark"] .assessment-index-panel-title,
     html[data-theme="dark"] .assessment-index-name,
-    html[data-theme="dark"] .assessment-index-course,
+    html[data-theme="dark"] .assessment-index-empty h2,
+    html[data-theme="dark"] .assessment-index-table td {
+        color: #e5ecff !important;
+    }
+
     html[data-theme="dark"] .assessment-index-subtitle,
     html[data-theme="dark"] .assessment-index-panel-copy,
+    html[data-theme="dark"] .assessment-index-course,
     html[data-theme="dark"] .assessment-index-table thead th,
-    html[data-theme="dark"] .assessment-index-table td {
-        color: #182033 !important;
+    html[data-theme="dark"] .assessment-index-empty .text-muted {
+        color: #a8b3cf !important;
     }
 
     html[data-theme="dark"] .assessment-index-table td {
-        border-color: #dbe4f0;
+        border-color: #334155;
     }
 
     html[data-theme="dark"] .assessment-index-table tbody tr:hover {
-        background: #f8fbff;
+        background: rgba(30, 41, 59, 0.35);
+    }
+
+    html[data-theme="dark"] .assessment-index-panel .badge {
+        background-color: rgba(30, 41, 59, 0.95) !important;
+        color: #e5ecff !important;
+    }
+
+    html[data-theme="dark"] .assessment-index-link.text-secondary {
+        color: #cbd5e1 !important;
     }
 
     html[data-theme="dark"] .assessment-index-actions .btn-outline-primary {

@@ -17,6 +17,10 @@
     --app-table-stripe: rgba(13, 110, 253, 0.03);
     --app-toggle-background: #ffffff;
     --app-toggle-text: #28315f;
+    --app-dropdown-background: rgba(255, 255, 255, 0.98);
+    --app-dropdown-hover: #eef4ff;
+    --app-dropdown-text: #182033;
+    --app-dropdown-divider: rgba(219, 228, 240, 0.95);
 }
 
 html[data-theme="dark"] {
@@ -38,6 +42,10 @@ html[data-theme="dark"] {
     --app-table-stripe: rgba(148, 197, 253, 0.06);
     --app-toggle-background: rgba(30, 41, 59, 0.92);
     --app-toggle-text: #e5ecff;
+    --app-dropdown-background: rgba(15, 23, 42, 0.98);
+    --app-dropdown-hover: rgba(30, 41, 59, 0.92);
+    --app-dropdown-text: #e5ecff;
+    --app-dropdown-divider: rgba(51, 65, 85, 0.95);
 }
 
 html {
@@ -77,6 +85,8 @@ a {
     background: var(--app-navbar-color);
     backdrop-filter: blur(14px);
     box-shadow: 0 10px 24px var(--app-shadow-color);
+    position: relative;
+    z-index: 1030;
 }
 
 .app-nav-link {
@@ -174,6 +184,50 @@ html[data-theme="dark"] .app-theme-toggle {
   font-size: 0.95rem;
   font-weight: 600;
   margin-right: 0.75rem;
+}
+
+.app-navbar .dropdown-menu {
+    background: var(--app-dropdown-background);
+    backdrop-filter: blur(14px);
+    border: 1px solid var(--app-border-color);
+    border-radius: 1rem;
+    box-shadow: 0 18px 36px var(--app-shadow-color);
+    color: var(--app-dropdown-text);
+    min-width: 15rem;
+    padding: 0.5rem;
+    z-index: 1040;
+}
+
+.app-navbar .dropdown-item,
+.app-navbar .dropdown-item-text {
+    border-radius: 0.75rem;
+    color: var(--app-dropdown-text);
+}
+
+.app-navbar .dropdown-item {
+    font-weight: 500;
+    padding: 0.7rem 0.85rem;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.app-navbar .dropdown-item:hover,
+.app-navbar .dropdown-item:focus,
+.app-navbar .dropdown-item:active {
+    background: var(--app-dropdown-hover);
+    color: var(--app-dropdown-text);
+}
+
+.app-navbar .dropdown-item-text {
+    padding: 0.55rem 0.85rem;
+}
+
+.app-navbar .dropdown-divider {
+    border-top-color: var(--app-dropdown-divider);
+    margin: 0.4rem 0;
+}
+
+.app-navbar .dropdown-toggle::after {
+    margin-left: 0.55rem;
 }
 
 .card,
