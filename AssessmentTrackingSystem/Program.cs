@@ -26,6 +26,7 @@ builder.Services.AddDefaultIdentity<ApplicationUser>(options =>
     })
     .AddEntityFrameworkStores<AtsDbContext>();
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, NoOpEmailSender>();
+builder.Services.AddScoped<InAppNotificationService>();
 
 var app = builder.Build();
 

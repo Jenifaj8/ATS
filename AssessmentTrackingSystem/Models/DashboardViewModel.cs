@@ -4,6 +4,8 @@ namespace AssessmentTrackingSystem.Models;
 
 public class DashboardViewModel
 {
+    public List<InAppNotificationViewModel> Notifications { get; set; } = new();
+
     public List<Assessment> UpcomingAssessments { get; set; } = new();
     public List<Assessment> OverdueAssessments { get; set; } = new();
 
@@ -13,4 +15,6 @@ public class DashboardViewModel
     public int NotStartedCount { get; set; }
     public int InProgressCount { get; set; }
     public int CompletedCount { get; set; }
+
+    public int NotificationCount => Notifications.Count;
 }
