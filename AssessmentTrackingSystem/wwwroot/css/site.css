@@ -1962,3 +1962,13 @@ html[data-theme="dark"] .assessment-status-badge-completed {
     background: rgba(34, 197, 94, 0.2) !important;
     color: #86efac !important;
 }
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    height: 50px;
+}
+
+.navbar-brand img {
+    width: 95px;
+}
+ 
