@@ -19,7 +19,7 @@
         <p class="dashboard-eyebrow mb-2">Student Overview</p>
         <h1 class="mb-2">Dashboard</h1>
         <p class="text-muted mb-0">
-            This page is ready to connect to the logged-in user flow later and already shows the main course and assessment stats.
+            Track your assessment progress, stay aware of urgent deadlines, and keep your semester organized in one place.
         </p>
     </div>
 
@@ -28,6 +28,34 @@
         <a asp-controller="Assessment" asp-action="Index" class="btn btn-primary">View Assessments</a>
     </div>
 </section>
+
+@if (Model.Notifications.Any())
+{
+    <section class="dashboard-notifications mb-4" aria-label="In-app notifications">
+        <div class="dashboard-section-heading">
+            <div>
+                <p class="dashboard-panel-kicker mb-1">In App Notifications</p>
+                <h2 class="h4 mb-0 dashboard-radar-title">DEADLINE RADAR</h2>
+            </div>
+            <span class="badge rounded-pill bg-primary-subtle text-primary-emphasis">@Model.NotificationCount alert(s)</span>
+        </div>
+
+        <div class="dashboard-notification-list">
+            @foreach (var notification in Model.Notifications)
+            {
+                <article class="dashboard-notification-card dashboard-notification-@notification.Type" data-notification-id="@notification.Id">
+                    <div class="dashboard-notification-icon">
+                        <i class="@notification.IconClass"></i>
+                    </div>
+                    <div class="dashboard-notification-content">
+                        <h3 class="h5 mb-1">@notification.Title</h3>
+                        <p class="mb-0">@notification.Message</p>
+                    </div>
+                </article>
+            }
+        </div>
+    </section>
+}
 
 <section class="row g-4 mb-4">
     <div class="col-12 col-md-6">
@@ -85,7 +113,7 @@
 
 <section class="row g-4">
     <div class="col-12 col-xl-6">
-        <article class="dashboard-panel h-100 upcoming-panel">
+        <article class="dashboard-panel h-100 upcoming-panel" id="upcoming-assessments-panel">
             <div class="dashboard-panel-header">
                 <div>
                     <p class="dashboard-panel-kicker mb-1">Due Soon</p>
@@ -117,7 +145,7 @@
     </div>
 
     <div class="col-12 col-xl-6">
-        <article class="dashboard-panel h-100 overdue-panel">
+        <article class="dashboard-panel h-100 overdue-panel" id="overdue-assessments-panel">
             <div class="dashboard-panel-header">
                 <div>
                     <p class="dashboard-panel-kicker mb-1">Needs Attention</p>

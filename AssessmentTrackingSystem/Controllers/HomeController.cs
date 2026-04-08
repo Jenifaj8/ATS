@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using ATS.Infrastructure.Data;
+using AssessmentTrackingSystem.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using AssessmentTrackingSystem.Models;
@@ -10,11 +11,16 @@ public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;
     private readonly AtsDbContext _context;
+    private readonly InAppNotificationService _notificationService;
 
-    public HomeController(ILogger<HomeController> logger, AtsDbContext context)
+    public HomeController(
+        ILogger<HomeController> logger,
+        AtsDbContext context,
+        InAppNotificationService notificationService)
     {
         _logger = logger;
         _context = context;
+        _notificationService = notificationService;
     }
 
     public IActionResult Index()
@@ -63,9 +69,11 @@ public class HomeController : Controller
         var notStarted = await _context.Assessments.CountAsync(a => a.Status == "Not Started");
         var inProgress = await _context.Assessments.CountAsync(a => a.Status == "In Progress");
         var completed = await _context.Assessments.CountAsync(a => a.Status == "Completed");
+        var notifications = _notificationService.BuildNotifications(upcoming, overdue, today);
 
         return new DashboardViewModel
         {
+            Notifications = notifications,
             UpcomingAssessments = upcoming,
             OverdueAssessments = overdue,
             TotalCourses = totalCourses,
