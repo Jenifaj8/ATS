@@ -163,9 +163,10 @@ html[data-theme="dark"] .app-theme-toggle {
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
-    justify-content: space-between;
-    padding-bottom: 1rem;
-    padding-top: 1rem;
+    justify-content: center;
+    text-align: center;
+    padding-bottom: 0.25rem;
+    padding-top: 0.25rem;
 }
 
 .navbar-collapse {
@@ -262,6 +263,7 @@ html[data-theme="dark"] .app-theme-toggle {
 .form-control::placeholder,
 .form-select::placeholder {
     color: var(--app-placeholder-color);
+    opacity: 1;
 }
 
 .navbar-toggler,
@@ -404,6 +406,13 @@ html[data-theme="dark"] .overdue-panel .dashboard-list-item .text-muted {
     color: #182033 !important;
 }
 
+html[data-theme="dark"] .upcoming-panel h3,
+html[data-theme="dark"] .upcoming-panel .dashboard-panel-kicker,
+html[data-theme="dark"] .overdue-panel h3,
+html[data-theme="dark"] .overdue-panel .dashboard-panel-kicker {
+    color: #182033 !important;
+}
+
 html[data-theme="dark"] .dashboard-stat-card h2,
 html[data-theme="dark"] .dashboard-panel h3,
 html[data-theme="dark"] .dashboard-panel h4,
@@ -420,6 +429,13 @@ html[data-theme="dark"] .dashboard-stat-icon {
 
 html[data-theme="dark"] .dashboard-stat-card.total {
     border-color: #4f8cff;
+}
+
+html[data-theme="dark"] #upcoming-assessments-panel h3,
+html[data-theme="dark"] #upcoming-assessments-panel .dashboard-panel-kicker,
+html[data-theme="dark"] #overdue-assessments-panel h3,
+html[data-theme="dark"] #overdue-assessments-panel .dashboard-panel-kicker {
+    color: #182033 !important;
 }
 
 html[data-theme="dark"] .dashboard-notification-card {
@@ -1107,7 +1123,8 @@ html[data-theme="dark"] .assessment-table-card {
 
 .form-floating > .form-control-plaintext::placeholder,
 .form-floating > .form-control::placeholder {
-    color: var(--bs-secondary-color);
+    color: var(--app-placeholder-color);
+    opacity: 1;
     text-align: end;
 }
 
@@ -1408,7 +1425,7 @@ html[data-theme="dark"] .assessment-table-card {
 
 .home-hero {
     background: linear-gradient(135deg, #eef4ff 0%, #dde9ff 100%);
-    padding: 70px 20px;
+    padding: 48px 20px;
     border-radius: 0 0 18px 18px;
     margin-bottom: 10px;
 }
@@ -1420,6 +1437,27 @@ html[data-theme="dark"] .assessment-table-card {
 .home-hero p {
     color: #44506b;
     font-size: 1.25rem;
+}
+
+.home-page-header {
+    margin-bottom: 2rem;
+}
+
+.home-page-header h1 {
+    color: #1f2a44;
+}
+
+.home-page-header p {
+    color: #44506b;
+    font-size: 1.25rem;
+}
+
+html[data-theme="dark"] .home-page-header h1 {
+    color: #e5ecff;
+}
+
+html[data-theme="dark"] .home-page-header p {
+    color: #cbd5e1;
 }
 
 .feature-box {
@@ -1471,6 +1509,59 @@ html[data-theme="dark"] .assessment-table-card {
 .action-icon {
     font-size: 2.2rem;
     color: #0d6efd;
+}
+
+.auth-page-shell {
+    display: flex;
+    justify-content: center;
+    padding: 2rem 0 3rem;
+}
+
+.auth-card {
+    background: var(--app-surface-color);
+    border: 1px solid var(--app-border-color);
+    border-radius: 1.5rem;
+    box-shadow: 0 18px 40px var(--app-shadow-color);
+    padding: 2rem;
+    width: 100%;
+}
+
+.auth-card--narrow {
+    max-width: 560px;
+}
+
+.auth-card-header {
+    margin-bottom: 1.5rem;
+}
+
+.auth-card-title {
+    color: var(--app-text-color);
+    margin-bottom: 0.65rem;
+}
+
+.auth-card-copy {
+    color: var(--app-muted-color);
+    font-size: 1.02rem;
+}
+
+.auth-card-links {
+    margin-top: 1.25rem;
+}
+
+.auth-card-links p {
+    margin-bottom: 0.85rem;
+}
+
+.auth-submit-wrap {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.5rem;
+}
+
+.auth-submit-button {
+    min-width: 220px;
+    padding-left: 2rem;
+    padding-right: 2rem;
 }
 
 @media (max-width: 1199.98px) {
@@ -1784,6 +1875,11 @@ html[data-theme="dark"] .assessment-status-badge-not-started {
 html[data-theme="dark"] .assessment-status-badge-in-progress {
     background: rgba(96, 165, 250, 0.2) !important;
     color: #93c5fd !important;
+}
+
+html[data-theme="dark"] #upcoming-assessments-panel .assessment-status-badge-in-progress,
+html[data-theme="dark"] #overdue-assessments-panel .assessment-status-badge-in-progress {
+    color: #182033 !important;
 }
 
 html[data-theme="dark"] .assessment-status-badge-completed {
