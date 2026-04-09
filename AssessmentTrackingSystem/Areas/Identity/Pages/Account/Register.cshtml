@@ -4,13 +4,14 @@
     ViewData["Title"] = "Register";
 }
 
-<h1>@ViewData["Title"]</h1>
+<section class="auth-page-shell">
+    <div class="auth-card auth-card--narrow">
+        <div class="auth-card-header text-center">
+            <h1 class="auth-card-title">@ViewData["Title"]</h1>
+            <p class="auth-card-copy mb-0">Create a new account to start tracking your courses and assessments</p>
+        </div>
 
-<div class="row">
-    <div class="col-md-6">
         <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-            <h2>Create a new account</h2>
-            <hr />
             <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
 
             <div class="form-floating mb-3">
@@ -43,10 +44,12 @@
                 <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
             </div>
 
-            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+            <div class="auth-submit-wrap">
+                <button id="registerSubmit" type="submit" class="btn btn-lg btn-primary auth-submit-button">Register</button>
+            </div>
         </form>
     </div>
-</div>
+</section>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

@@ -7,19 +7,32 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="home-hero text-center">
-    <div class="container">
-        <h1 class="display-4 fw-bold">Assessment Tracking System</h1>
-        <p class="lead mt-3 mb-0">
+<div class="container mt-4">
+    <section class="home-page-header text-center">
+        <h1 class="display-4 fw-bold mb-3">Assessment Tracking System</h1>
+        <p class="lead mb-0">
             Organize your courses, track your assessments, and stay on top of your deadlines.
         </p>
-    </div>
-</div>
-
-<div class="container mt-5">
+    </section>
 
     @if (!SignInManager.IsSignedIn(User))
     {
+        <div class="home-card text-center">
+            <h2 class="fw-bold mb-3">Get Started</h2>
+            <p class="mb-4">
+                Create an account or log in to begin managing your courses and assessments.
+            </p>
+
+            <div class="d-flex justify-content-center gap-3 flex-wrap">
+                <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary btn-lg px-4">
+                    Register
+                </a>
+                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-primary btn-lg px-4">
+                    Login
+                </a>
+            </div>
+        </div>
+
         <div class="row g-4 text-center mb-5">
             <div class="col-md-4">
                 <div class="feature-box h-100">
@@ -43,22 +56,6 @@
                     <h4 class="mt-3">View Agenda</h4>
                     <p class="mb-0">Stay aware of upcoming work and manage your academic schedule.</p>
                 </div>
-            </div>
-        </div>
-
-        <div class="home-card text-center">
-            <h2 class="fw-bold mb-3">Get Started</h2>
-            <p class="mb-4">
-                Create an account or log in to begin managing your courses and assessments.
-            </p>
-
-            <div class="d-flex justify-content-center gap-3 flex-wrap">
-                <a asp-area="Identity" asp-page="/Account/Register" class="btn btn-primary btn-lg px-4">
-                    Register
-                </a>
-                <a asp-area="Identity" asp-page="/Account/Login" class="btn btn-outline-primary btn-lg px-4">
-                    Login
-                </a>
             </div>
         </div>
     }
