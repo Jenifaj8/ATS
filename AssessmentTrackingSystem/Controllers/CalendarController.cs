@@ -1,5 +1,6 @@
 using ATS.Infrastructure.Data;
 using AssessmentTrackingSystem.Models;
+using AssessmentTrackingSystem.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -38,8 +39,8 @@ namespace AssessmentTrackingSystem.Controllers
             Title = a.Name,
             CourseName = a.Course?.Name ?? "No course",
             Status = a.Status,
-            Category = GetCategoryLabel(a.Name),
-            AccentClass = GetAccentClass(a.Name),
+            Category = CalendarItemTypeMapper.GetCategoryLabel(a.Name),
+            AccentClass = CalendarItemTypeMapper.GetAccentClass(a.Name),
             DueDate = a.DueDate
           }).ToList());
 
@@ -61,30 +62,6 @@ namespace AssessmentTrackingSystem.Controllers
       };
 
       return View(model);
-    }
-
-    private static string GetCategoryLabel(string name)
-    {
-      var normalizedName = name.Trim().ToLowerInvariant();
-
-      if (normalizedName.Contains("exam")) return "Exam";
-      if (normalizedName.Contains("quiz")) return "Quiz";
-      if (normalizedName.Contains("test")) return "Test";
-      if (normalizedName.Contains("assignment")) return "Assignment";
-      if (normalizedName.Contains("project")) return "Project";
-      return "Assessment";
-    }
-
-    private static string GetAccentClass(string name)
-    {
-      var normalizedName = name.Trim().ToLowerInvariant();
-
-      if (normalizedName.Contains("exam")) return "calendar-item-exam";
-      if (normalizedName.Contains("quiz")) return "calendar-item-quiz";
-      if (normalizedName.Contains("test")) return "calendar-item-test";
-      if (normalizedName.Contains("assignment")) return "calendar-item-assignment";
-      if (normalizedName.Contains("project")) return "calendar-item-project";
-      return "calendar-item-assessment";
     }
   }
 }
