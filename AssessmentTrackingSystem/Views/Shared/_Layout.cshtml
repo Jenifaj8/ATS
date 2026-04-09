@@ -30,7 +30,12 @@
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm app-navbar border-bottom box-shadow mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" asp-controller="Home" asp-action="Index">
-                Assessment Tracking System
+                @if (SignInManager.IsSignedIn(User))
+                {
+                    <span class="app-brand-mark" aria-hidden="true">
+                        <img src="~/ATS-LOGO.png" alt="" class="app-brand-image" />
+                    </span>
+                }
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-label="Toggle navigation">

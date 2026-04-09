@@ -9,7 +9,15 @@
 
 <div class="container mt-4">
     <section class="home-page-header text-center">
-        <h1 class="display-4 fw-bold mb-3">Assessment Tracking System</h1>
+        <div class="home-page-title-wrap">
+            @if (!SignInManager.IsSignedIn(User))
+            {
+                <span class="app-brand-mark home-page-brand-mark" aria-hidden="true">
+                    <img src="~/ATS-LOGO.png" alt="" class="app-brand-image" />
+                </span>
+            }
+            <h1 class="display-4 fw-bold mb-3">Assessment Tracking System</h1>
+        </div>
         <p class="lead mb-0">
             Organize your courses, track your assessments, and stay on top of your deadlines.
         </p>
