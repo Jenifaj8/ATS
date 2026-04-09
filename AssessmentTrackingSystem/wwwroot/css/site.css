@@ -1479,9 +1479,9 @@ html[data-theme="dark"] .home-page-header p {
     align-items: center;
     display: inline-flex;
     flex: 0 0 auto;
-    height: 3.25rem;
+    height: 4rem;
     justify-content: center;
-    width: 3.25rem;
+    width: 4rem;
 }
 
 .app-brand-image {
@@ -1492,8 +1492,8 @@ html[data-theme="dark"] .home-page-header p {
 }
 
 .home-page-brand-mark {
-    height: 5.5rem;
-    width: 5.5rem;
+    height: 6.25rem;
+    width: 6.25rem;
 }
 
 .feature-box {
