@@ -234,6 +234,14 @@ html[data-theme="dark"] .app-theme-toggle {
     margin-left: 0.55rem;
 }
 
+.app-user-avatar {
+    border: 2px solid rgba(147, 197, 253, 0.35);
+    border-radius: 50%;
+    height: 2rem;
+    object-fit: cover;
+    width: 2rem;
+}
+
 .card,
 .dashboard-panel,
 .dashboard-stat-card,
@@ -252,6 +260,181 @@ html[data-theme="dark"] .app-theme-toggle {
     --bs-table-striped-bg: var(--app-table-stripe);
     --bs-table-striped-color: var(--app-text-color);
     --bs-table-hover-color: var(--app-text-color);
+}
+
+.manage-page-shell {
+    margin: 2rem auto 3rem;
+    max-width: 1100px;
+}
+
+.manage-page-header {
+    margin-bottom: 1.75rem;
+}
+
+.manage-page-kicker {
+    color: var(--app-link-color);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+}
+
+.manage-status-message {
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.manage-panel {
+    background: var(--app-surface-color);
+    border: 1px solid var(--app-border-color);
+    border-radius: 1.5rem;
+    box-shadow: 0 18px 38px var(--app-shadow-color);
+}
+
+.manage-panel {
+    padding: 1.5rem;
+}
+
+.manage-avatar-header {
+    align-items: center;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.manage-section-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    margin-bottom: 0.4rem;
+}
+
+.manage-section-text {
+    color: var(--app-muted-color);
+    margin-bottom: 0;
+    max-width: 34rem;
+}
+
+.manage-avatar-preview-wrap {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    text-align: center;
+}
+
+.manage-avatar-preview {
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(99, 102, 241, 0.18));
+    border: 3px solid rgba(59, 130, 246, 0.25);
+    border-radius: 50%;
+    height: 7rem;
+    padding: 0.45rem;
+    width: 7rem;
+}
+
+.manage-avatar-preview-label {
+    color: var(--app-muted-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.manage-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.manage-field-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.avatar-picker-grid {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+.avatar-option-card {
+    position: relative;
+}
+
+.avatar-option-input {
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+}
+
+.avatar-option-label {
+    align-items: center;
+    background: var(--app-surface-strong-color);
+    border: 1px solid var(--app-border-color);
+    border-radius: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    height: 100%;
+    justify-content: center;
+    padding: 1rem 0.85rem;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.avatar-option-label:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    box-shadow: 0 14px 30px rgba(59, 130, 246, 0.14);
+    transform: translateY(-2px);
+}
+
+.avatar-option-input:checked + .avatar-option-label {
+    border-color: #2563eb;
+    box-shadow: 0 18px 36px rgba(37, 99, 235, 0.2);
+    transform: translateY(-2px);
+}
+
+.avatar-option-image {
+    border-radius: 50%;
+    height: 4.5rem;
+    width: 4.5rem;
+}
+
+.avatar-option-name {
+    color: var(--app-text-color);
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+
+.manage-save-button {
+    align-self: flex-start;
+    border-radius: 999px;
+    min-width: 180px;
+    padding-inline: 1.5rem;
+}
+
+@media (max-width: 991.98px) {
+    .manage-avatar-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .manage-panel {
+        padding: 1rem;
+    }
+
+    .manage-save-button {
+        align-self: stretch;
+        width: 100%;
+    }
+
+    .avatar-picker-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
 }
 
 .form-control,
@@ -2157,4 +2340,3 @@ html[data-theme="dark"] .assessment-status-badge-completed {
 .navbar-brand img {
     width: 95px;
 }
- 
