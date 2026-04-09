@@ -94,7 +94,10 @@ a {
 }
 
 .navbar-brand {
+    align-items: center;
     color: var(--app-text-color) !important;
+    display: inline-flex;
+    gap: 0.65rem;
 }
 
 .navbar-brand:hover,
@@ -1443,6 +1446,18 @@ html[data-theme="dark"] .assessment-table-card {
     margin-bottom: 2rem;
 }
 
+.home-page-title-wrap {
+    align-items: center;
+    display: flex;
+    gap: 0.85rem;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+}
+
+.home-page-title-wrap h1 {
+    margin-bottom: 0;
+}
+
 .home-page-header h1 {
     color: #1f2a44;
 }
@@ -1458,6 +1473,27 @@ html[data-theme="dark"] .home-page-header h1 {
 
 html[data-theme="dark"] .home-page-header p {
     color: #cbd5e1;
+}
+
+.app-brand-mark {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    height: 3.25rem;
+    justify-content: center;
+    width: 3.25rem;
+}
+
+.app-brand-image {
+    display: block;
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+}
+
+.home-page-brand-mark {
+    height: 5.5rem;
+    width: 5.5rem;
 }
 
 .feature-box {
