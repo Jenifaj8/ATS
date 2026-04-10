@@ -2,14 +2,12 @@ namespace AssessmentTrackingSystem.Services;
 
 public static class AvatarUrlBuilder
 {
-    private const string BaseUrl = "https://api.dicebear.com/9.x/thumbs/svg";
-
     public static string Build(string? seed)
     {
-        var normalizedSeed = string.IsNullOrWhiteSpace(seed)
-            ? "study-buddy"
-            : seed.Trim();
+        var safeSeed = string.IsNullOrWhiteSpace(seed)
+            ? "student"
+            : Uri.EscapeDataString(seed.Trim());
 
-        return $"{BaseUrl}?seed={Uri.EscapeDataString(normalizedSeed)}&backgroundType=gradientLinear";
+        return $"https://api.dicebear.com/9.x/fun-emoji/svg?seed={safeSeed}";
     }
 }
