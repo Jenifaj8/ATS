@@ -1,5 +1,6 @@
 ﻿@using ATS.Core.Entities
 @using Microsoft.AspNetCore.Identity
+@using AssessmentTrackingSystem.Services
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
@@ -95,8 +96,11 @@
                     {
                         var currentUser = await UserManager.GetUserAsync(User);
                         <li class="nav-item dropdown">
-                            <a class="nav-link app-nav-link dropdown-toggle" href="#" id="user-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="bi bi-person-circle me-1"></i> @(currentUser?.FirstName ?? User.Identity?.Name)
+                            <a class="nav-link app-nav-link dropdown-toggle app-user-menu-toggle" href="#" id="user-menu" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="@AvatarUrlBuilder.Build(currentUser?.AvatarSeed ?? currentUser?.FirstName ?? currentUser?.UserName ?? User.Identity?.Name)"
+                                     alt=""
+                                     class="app-user-avatar me-2" />
+                                @(currentUser?.FirstName ?? User.Identity?.Name)
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="user-menu">
                                 <li>
