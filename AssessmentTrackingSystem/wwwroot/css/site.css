@@ -234,6 +234,22 @@ html[data-theme="dark"] .app-theme-toggle {
     margin-left: 0.55rem;
 }
 
+.app-user-menu-toggle {
+    align-items: center;
+    display: inline-flex;
+    min-width: 0;
+}
+
+.app-user-avatar {
+    border: 2px solid rgba(59, 130, 246, 0.28);
+    border-radius: 50%;
+    display: block;
+    flex: 0 0 auto;
+    height: 2.75rem;
+    object-fit: cover;
+    width: 2.75rem;
+}
+
 .card,
 .dashboard-panel,
 .dashboard-stat-card,
@@ -257,6 +273,8 @@ html[data-theme="dark"] .app-theme-toggle {
 .manage-page-shell {
     margin: 2rem auto 3rem;
     max-width: 1100px;
+    min-width: 0;
+    width: 100%;
 }
 
 .manage-page-header {
@@ -282,6 +300,8 @@ html[data-theme="dark"] .app-theme-toggle {
     border: 1px solid var(--app-border-color);
     border-radius: 1.5rem;
     box-shadow: 0 18px 38px var(--app-shadow-color);
+    min-width: 0;
+    overflow: hidden;
 }
 
 .manage-panel {
@@ -291,6 +311,7 @@ html[data-theme="dark"] .app-theme-toggle {
 .manage-avatar-header {
     align-items: center;
     display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
     justify-content: space-between;
     margin-bottom: 1.5rem;
@@ -311,6 +332,7 @@ html[data-theme="dark"] .app-theme-toggle {
 .manage-avatar-preview-wrap {
     align-items: center;
     display: flex;
+    flex: 0 0 auto;
     flex-direction: column;
     gap: 0.65rem;
     text-align: center;
@@ -320,7 +342,10 @@ html[data-theme="dark"] .app-theme-toggle {
     background: linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(99, 102, 241, 0.18));
     border: 3px solid rgba(59, 130, 246, 0.25);
     border-radius: 50%;
+    display: block;
     height: 7rem;
+    object-fit: cover;
+    overflow: hidden;
     padding: 0.45rem;
     width: 7rem;
 }
@@ -335,12 +360,14 @@ html[data-theme="dark"] .app-theme-toggle {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    min-width: 0;
 }
 
 .manage-field-group {
     display: flex;
     flex-direction: column;
     gap: 0.65rem;
+    min-width: 0;
 }
 
 .avatar-picker-grid {
@@ -389,7 +416,9 @@ html[data-theme="dark"] .app-theme-toggle {
 
 .avatar-option-image {
     border-radius: 50%;
+    display: block;
     height: 4.5rem;
+    object-fit: cover;
     width: 4.5rem;
 }
 
