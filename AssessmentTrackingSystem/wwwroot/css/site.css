@@ -85,6 +85,8 @@ a {
     background: var(--app-navbar-color);
     backdrop-filter: blur(14px);
     box-shadow: 0 10px 24px var(--app-shadow-color);
+    padding-bottom: 0.25rem;
+    padding-top: 0.25rem;
     position: relative;
     z-index: 1030;
 }
@@ -1800,13 +1802,13 @@ html[data-theme="dark"] .home-page-header p {
 }
 
 .app-brand-mark--nav {
-    height: 3.5rem;
-    width: 3.5rem;
+    height: 5.2rem;
+    width: 5.2rem;
 }
 
 .home-page-brand-mark {
-    height: 7rem;
-    width: 7rem;
+    height: 8rem;
+    width: 8rem;
 }
 
 .feature-box {

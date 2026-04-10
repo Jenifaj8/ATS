@@ -80,25 +80,6 @@
         </form>
     </section>
 
-    <section class="manage-panel">
-        <div class="manage-security-header">
-            <div>
-                <p class="manage-page-kicker">Security</p>
-                <h2 class="manage-section-title">Two-factor authentication</h2>
-                <p class="manage-section-text">Add an authenticator app for a more secure sign-in and scan the QR code during setup.</p>
-            </div>
-
-            <span class="badge rounded-pill @(Model.IsTwoFactorEnabled ? "text-bg-success" : "text-bg-light")">
-                @(Model.IsTwoFactorEnabled ? "Enabled" : "Not enabled")
-            </span>
-        </div>
-
-        <div class="manage-security-actions">
-            <a asp-page="./EnableAuthenticator" class="btn btn-outline-primary">
-                @(Model.HasAuthenticator ? "Open authenticator setup" : "Set up authenticator")
-            </a>
-        </div>
-    </section>
 </div>
 
 @section Scripts {

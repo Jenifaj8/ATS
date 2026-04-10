@@ -47,9 +47,6 @@ public class IndexModel : PageModel
     public IReadOnlyList<string> AvatarSeeds => PresetAvatarSeeds;
 
     public string AvatarPreviewUrl => AvatarUrlBuilder.Build(Input.AvatarSeed);
-    public bool IsTwoFactorEnabled { get; private set; }
-    public bool HasAuthenticator { get; private set; }
-
     public class InputModel
     {
         [Required]
@@ -141,9 +138,6 @@ public class IndexModel : PageModel
 
     private async Task LoadAsync(ApplicationUser user)
     {
-        HasAuthenticator = await _userManager.GetAuthenticatorKeyAsync(user) is not null;
-        IsTwoFactorEnabled = await _userManager.GetTwoFactorEnabledAsync(user);
-
         Input = new InputModel
         {
             DisplayName = ResolveDisplayName(user),
