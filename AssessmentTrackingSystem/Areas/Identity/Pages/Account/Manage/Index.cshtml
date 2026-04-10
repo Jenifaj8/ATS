@@ -1,0 +1,106 @@
+@page
+@model AssessmentTrackingSystem.Areas.Identity.Pages.Account.Manage.IndexModel
+@using AssessmentTrackingSystem.Services
+@{
+    ViewData["Title"] = "Profile";
+}
+
+<div class="manage-page-shell">
+    @if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+    {
+        <div class="alert alert-success manage-status-message" role="alert">
+            @Model.StatusMessage
+        </div>
+    }
+
+    <section class="manage-panel">
+        <div class="manage-avatar-header">
+            <div>
+                <p class="manage-page-kicker">Profile</p>
+                <h2 class="manage-section-title">Avatar and Profile Details</h2>
+                <p class="manage-section-text">
+                    Your profile, your vibe.
+                </p>
+            </div>
+
+            <div class="manage-avatar-preview-wrap">
+                <img src="@Model.AvatarPreviewUrl"
+                     alt="Selected avatar preview"
+                     class="manage-avatar-preview" />
+                <span class="manage-avatar-preview-label">Current preview</span>
+            </div>
+        </div>
+
+        <form method="post" class="manage-form">
+            <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+            <div class="manage-field-group">
+                <label asp-for="Input.DisplayName" class="form-label"></label>
+                <input asp-for="Input.DisplayName" class="form-control" placeholder="Choose the name shown in the app" />
+                <span asp-validation-for="Input.DisplayName" class="text-danger"></span>
+            </div>
+
+            <div class="manage-field-group">
+                <label asp-for="Input.Email" class="form-label"></label>
+                <input asp-for="Input.Email" class="form-control" readonly />
+            </div>
+
+            <div class="manage-field-group">
+                <label asp-for="Input.PhoneNumber" class="form-label"></label>
+                <input asp-for="Input.PhoneNumber" class="form-control" placeholder="Enter your phone number" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+
+            <div class="manage-field-group">
+                <span class="form-label d-block">Avatar options</span>
+                <div class="avatar-picker-grid">
+                    @for (var index = 0; index < Model.AvatarSeeds.Count; index++)
+                    {
+                        var seed = Model.AvatarSeeds[index];
+                        var optionId = $"avatar-option-{index}";
+                        <div class="avatar-option-card">
+                            <input asp-for="Input.AvatarSeed"
+                                   class="avatar-option-input"
+                                   id="@optionId"
+                                   type="radio"
+                                   value="@seed" />
+                            <label class="avatar-option-label" for="@optionId">
+                                <img src="@AvatarUrlBuilder.Build(seed)"
+                                     alt="@seed avatar"
+                                     class="avatar-option-image" />
+                                <span class="avatar-option-name">@seed.Replace("-", " ")</span>
+                            </label>
+                        </div>
+                    }
+                </div>
+                <span asp-validation-for="Input.AvatarSeed" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary manage-save-button">Save changes</button>
+        </form>
+    </section>
+
+    <section class="manage-panel">
+        <div class="manage-security-header">
+            <div>
+                <p class="manage-page-kicker">Security</p>
+                <h2 class="manage-section-title">Two-factor authentication</h2>
+                <p class="manage-section-text">Add an authenticator app for a more secure sign-in and scan the QR code during setup.</p>
+            </div>
+
+            <span class="badge rounded-pill @(Model.IsTwoFactorEnabled ? "text-bg-success" : "text-bg-light")">
+                @(Model.IsTwoFactorEnabled ? "Enabled" : "Not enabled")
+            </span>
+        </div>
+
+        <div class="manage-security-actions">
+            <a asp-page="./EnableAuthenticator" class="btn btn-outline-primary">
+                @(Model.HasAuthenticator ? "Open authenticator setup" : "Set up authenticator")
+            </a>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -12,10 +12,6 @@
         gap: 1.5rem;
     }
 
-    .form-page-shell--compact {
-        max-width: 980px;
-    }
-
     .form-page-hero {
         display: flex;
         justify-content: space-between;
@@ -26,6 +22,7 @@
         border-radius: 1.5rem;
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.92) 0%, rgba(238, 244, 255, 0.96) 58%, rgba(255, 248, 238, 0.96) 100%);
         box-shadow: 0 20px 45px rgba(37, 99, 235, 0.08);
+        color: var(--app-text-color);
     }
 
     .form-page-eyebrow {
@@ -45,7 +42,7 @@
 
     .form-page-subtitle {
         max-width: 42rem;
-        color: #475569;
+        color: var(--app-muted-color);
         font-size: 1.02rem;
         margin-bottom: 0;
     }
@@ -56,17 +53,20 @@
     }
 
     .form-page-panel {
-        max-width: 760px;
+        border-radius: 1.5rem;
+        overflow: hidden;
         width: 100%;
-        margin: 0 auto;
     }
 
     .form-card {
+        background-clip: padding-box;
         padding: 1.75rem;
         border: 1px solid rgba(203, 213, 225, 0.95);
         border-radius: 1.5rem;
         background: rgba(255, 255, 255, 0.94);
         box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+        color: var(--app-text-color);
+        overflow: hidden;
     }
 
     .form-card-header {
@@ -95,7 +95,7 @@
     }
 
     .form-card-copy {
-        color: #64748b;
+        color: var(--app-muted-color);
         margin-bottom: 0;
     }
 
@@ -143,8 +143,69 @@
     }
 
     .form-field-hint {
-        color: #64748b;
+        color: var(--app-muted-color);
         font-size: 0.92rem;
+    }
+
+    html[data-theme="dark"] .form-page-hero,
+    html[data-theme="dark"] .form-card {
+        background: rgba(17, 24, 39, 0.96);
+        border-color: #334155;
+        box-shadow: 0 14px 30px rgba(2, 6, 23, 0.28);
+        color: #e5ecff;
+    }
+
+    html[data-theme="dark"] .form-page-title,
+    html[data-theme="dark"] .form-card-title,
+    html[data-theme="dark"] .form-label {
+        color: #e5ecff !important;
+    }
+
+    html[data-theme="dark"] .form-page-subtitle,
+    html[data-theme="dark"] .form-card-copy,
+    html[data-theme="dark"] .form-field-hint {
+        color: #a8b3cf !important;
+    }
+
+    html[data-theme="dark"] .form-page-back.btn-outline-primary {
+        color: #e5ecff;
+        border-color: #475569;
+    }
+
+    html[data-theme="dark"] .form-page-back.btn-outline-primary:hover,
+    html[data-theme="dark"] .form-page-back.btn-outline-primary:focus {
+        background: rgba(30, 41, 59, 0.92);
+        border-color: #64748b;
+        color: #ffffff;
+    }
+
+    html[data-theme="dark"] .form-field .form-control,
+    html[data-theme="dark"] .form-field .form-select {
+        background-color: #0f172a;
+        border-color: #334155;
+        color: #e5ecff;
+    }
+
+    html[data-theme="dark"] .form-field .form-control:hover,
+    html[data-theme="dark"] .form-field .form-select:hover,
+    html[data-theme="dark"] .form-field .form-control:focus,
+    html[data-theme="dark"] .form-field .form-select:focus {
+        background-color: #111827;
+        border-color: #475569;
+        color: #e5ecff;
+    }
+
+    html[data-theme="dark"] .form-actions .btn-light {
+        background: #334155;
+        border-color: #334155;
+        color: #e5ecff;
+    }
+
+    html[data-theme="dark"] .form-actions .btn-light:hover,
+    html[data-theme="dark"] .form-actions .btn-light:focus {
+        background: #475569;
+        border-color: #475569;
+        color: #ffffff;
     }
 
     .form-actions {
@@ -196,7 +257,7 @@
     }
 </style>
 
-<section class="form-page-shell form-page-shell--compact">
+<section class="form-page-shell">
     <div class="form-page-hero">
         <div>
             <div class="form-page-eyebrow">Assessment</div>

@@ -46,6 +46,35 @@ public class HomeController : Controller
         return View(assessments);
     }
 
+    public async Task<IActionResult> UpcomingAssessments()
+    {
+        var today = DateTime.Today;
+        var nextWeek = today.AddDays(7);
+
+        var assessments = await _context.Assessments
+            .Include(a => a.Course)
+            .Where(a => a.DueDate >= today && a.DueDate <= nextWeek)
+            .OrderBy(a => a.DueDate)
+            .ToListAsync();
+
+        ViewBag.SelectedStatus = "Upcoming";
+        return View("AssessmentStatus", assessments);
+    }
+
+    public async Task<IActionResult> OverdueAssessments()
+    {
+        var today = DateTime.Today;
+
+        var assessments = await _context.Assessments
+            .Include(a => a.Course)
+            .Where(a => a.DueDate < today && a.Status != "Completed")
+            .OrderBy(a => a.DueDate)
+            .ToListAsync();
+
+        ViewBag.SelectedStatus = "Overdue";
+        return View("AssessmentStatus", assessments);
+    }
+
     private async Task<DashboardViewModel> BuildDashboardViewModelAsync()
     {
         var today = DateTime.Today;

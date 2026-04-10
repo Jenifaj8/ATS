@@ -1,0 +1,79 @@
+@page
+@model AssessmentTrackingSystem.Areas.Identity.Pages.Account.Manage.EnableAuthenticatorModel
+
+@{
+    ViewData["Title"] = "Authenticator setup";
+}
+
+<div class="manage-page-shell">
+    @if (!string.IsNullOrWhiteSpace(Model.StatusMessage))
+    {
+        <div class="alert alert-success manage-status-message" role="alert">
+            @Model.StatusMessage
+        </div>
+    }
+
+    <section class="manage-panel">
+        <div class="manage-security-header">
+            <div>
+                <p class="manage-page-kicker">Security</p>
+                <h1 class="manage-section-title">Authenticator app</h1>
+                <p class="manage-section-text">Scan the QR code with Microsoft Authenticator, Google Authenticator, or another TOTP app, then enter the 6-digit code to finish setup.</p>
+            </div>
+
+            <a asp-page="./Index" class="btn btn-outline-primary">Back to profile</a>
+        </div>
+
+        <div class="twofactor-grid">
+            <div class="twofactor-qr-panel">
+                <div id="qrCode" class="twofactor-qr-box" data-url="@Model.AuthenticatorUri"></div>
+                <p class="twofactor-helper mb-0">If scanning does not work, enter the setup key manually.</p>
+            </div>
+
+            <div class="twofactor-content">
+                <div class="twofactor-key-card">
+                    <p class="twofactor-label">Setup key</p>
+                    <code class="twofactor-key">@Model.SharedKey</code>
+                </div>
+
+                <form method="post" class="manage-form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="manage-field-group">
+                        <label asp-for="Input.Code" class="form-label"></label>
+                        <input asp-for="Input.Code" class="form-control" autocomplete="one-time-code" placeholder="Enter the 6-digit code" />
+                        <span asp-validation-for="Input.Code" class="text-danger"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary manage-save-button">
+                        @(Model.IsTwoFactorEnabled ? "Verify authenticator" : "Enable two-factor authentication")
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        (function () {
+            var qrElement = document.getElementById("qrCode");
+            if (!qrElement || !window.QRCode) {
+                return;
+            }
+
+            var qrUrl = qrElement.getAttribute("data-url");
+            if (!qrUrl) {
+                return;
+            }
+
+            new QRCode(qrElement, {
+                text: qrUrl,
+                width: 220,
+                height: 220
+            });
+        })();
+    </script>
+}

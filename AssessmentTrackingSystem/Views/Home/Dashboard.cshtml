@@ -113,64 +113,68 @@
 
 <section class="row g-4">
     <div class="col-12 col-xl-6">
-        <article class="dashboard-panel h-100 upcoming-panel" id="upcoming-assessments-panel">
-            <div class="dashboard-panel-header">
-                <div>
-                    <p class="dashboard-panel-kicker mb-1">Due Soon</p>
-                    <h3 class="h4 mb-0">Upcoming Assessments</h3>
+        <a asp-action="UpcomingAssessments" class="dashboard-panel-link">
+            <article class="dashboard-panel h-100 upcoming-panel" id="upcoming-assessments-panel">
+                <div class="dashboard-panel-header">
+                    <div>
+                        <p class="dashboard-panel-kicker mb-1">Due Soon</p>
+                        <h3 class="h4 mb-0">Upcoming Assessments</h3>
+                    </div>
+                    <span class="badge rounded-pill text-bg-light">@Model.UpcomingAssessments.Count</span>
                 </div>
-                <span class="badge rounded-pill text-bg-light">@Model.UpcomingAssessments.Count</span>
-            </div>
 
-            @if (!Model.UpcomingAssessments.Any())
-            {
-                <p class="text-muted mb-0">No assessments due in the next 7 days.</p>
-            }
-            else
-            {
-                <div class="dashboard-list">
-                    @foreach (var assessment in Model.UpcomingAssessments)
-                    {
-                        <div class="dashboard-list-item">
-                            <div>
-                                <h4 class="h6 mb-1">@assessment.Name</h4>
-                                <p class="text-muted mb-0">@assessment.Course?.Code - @assessment.DueDate.ToString("MMM dd, yyyy")</p>
+                @if (!Model.UpcomingAssessments.Any())
+                {
+                    <p class="text-muted mb-0">No assessments due in the next 7 days.</p>
+                }
+                else
+                {
+                    <div class="dashboard-list">
+                        @foreach (var assessment in Model.UpcomingAssessments)
+                        {
+                            <div class="dashboard-list-item">
+                                <div>
+                                    <h4 class="h6 mb-1">@assessment.Name</h4>
+                                    <p class="text-muted mb-0">@assessment.Course?.Code - @assessment.DueDate.ToString("MMM dd, yyyy")</p>
+                                </div>
                             </div>
-                        </div>
-                    }
-                </div>
-            }
-        </article>
+                        }
+                    </div>
+                }
+            </article>
+        </a>
     </div>
 
     <div class="col-12 col-xl-6">
-        <article class="dashboard-panel h-100 overdue-panel" id="overdue-assessments-panel">
-            <div class="dashboard-panel-header">
-                <div>
-                    <p class="dashboard-panel-kicker mb-1">Needs Attention</p>
-                    <h3 class="h4 mb-0">Overdue Assessments</h3>
+        <a asp-action="OverdueAssessments" class="dashboard-panel-link">
+            <article class="dashboard-panel h-100 overdue-panel" id="overdue-assessments-panel">
+                <div class="dashboard-panel-header">
+                    <div>
+                        <p class="dashboard-panel-kicker mb-1">Needs Attention</p>
+                        <h3 class="h4 mb-0">Overdue Assessments</h3>
+                    </div>
+                    <span class="badge rounded-pill bg-danger text-white">@Model.OverdueAssessments.Count</span>
                 </div>
-                <span class="badge rounded-pill bg-danger text-white">@Model.OverdueAssessments.Count</span>
-            </div>
 
-            @if (!Model.OverdueAssessments.Any())
-            {
-                <p class="text-muted mb-0">Nothing overdue right now.</p>
-            }
-            else
-            {
-                <div class="dashboard-list">
-                    @foreach (var assessment in Model.OverdueAssessments)
-                    {
-                        <div class="dashboard-list-item">
-                            <div>
-                                <h4 class="h6 mb-1">@assessment.Name</h4>
-                                <p class="text-muted mb-0">@assessment.Course?.Code - @assessment.DueDate.ToString("MMM dd, yyyy")</p>
+                @if (!Model.OverdueAssessments.Any())
+                {
+                    <p class="text-muted mb-0">Nothing overdue right now.</p>
+                }
+                else
+                {
+                    <div class="dashboard-list">
+                        @foreach (var assessment in Model.OverdueAssessments)
+                        {
+                            <div class="dashboard-list-item">
+                                <div>
+                                    <h4 class="h6 mb-1">@assessment.Name</h4>
+                                    <p class="text-muted mb-0">@assessment.Course?.Code - @assessment.DueDate.ToString("MMM dd, yyyy")</p>
+                                </div>
                             </div>
-                        </div>
-                    }
-                </div>
-            }
-        </article>
+                        }
+                    </div>
+                }
+            </article>
+        </a>
     </div>
 </section>
