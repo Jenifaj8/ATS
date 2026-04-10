@@ -85,10 +85,15 @@ a {
     background: var(--app-navbar-color);
     backdrop-filter: blur(14px);
     box-shadow: 0 10px 24px var(--app-shadow-color);
-    padding-bottom: 0.25rem;
-    padding-top: 0.25rem;
+    padding-bottom: 0.2rem;
+    padding-top: 0.2rem;
     position: relative;
     z-index: 1030;
+}
+
+.app-navbar .container-fluid {
+    align-items: center;
+    min-height: 5.4rem;
 }
 
 .app-nav-link {
@@ -100,6 +105,9 @@ a {
     color: var(--app-text-color) !important;
     display: inline-flex;
     gap: 0.65rem;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 0;
 }
 
 .navbar-brand:hover,
@@ -1802,13 +1810,13 @@ html[data-theme="dark"] .home-page-header p {
 }
 
 .app-brand-mark--nav {
-    height: 5.2rem;
-    width: 5.2rem;
+    height: 3.5rem;
+    width: 3.5rem;
 }
 
 .home-page-brand-mark {
-    height: 8rem;
-    width: 8rem;
+    height: 7rem;
+    width: 7rem;
 }
 
 .feature-box {
