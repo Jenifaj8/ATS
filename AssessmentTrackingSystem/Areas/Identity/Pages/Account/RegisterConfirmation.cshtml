@@ -20,13 +20,13 @@
         @if (!string.IsNullOrWhiteSpace(Model.Email))
         {
             <p class="auth-confirmation-email">
-                You are signed in as <strong>@Model.Email</strong>.
+                You can now sign in as <strong>@Model.Email</strong>.
             </p>
         }
 
         <div class="auth-submit-wrap">
-            <a href="@Model.ContinueUrl" class="btn btn-lg btn-primary auth-submit-button">
-                Continue
+            <a asp-page="./Login" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-lg btn-primary auth-submit-button">
+                Continue to login
             </a>
         </div>
     </div>
