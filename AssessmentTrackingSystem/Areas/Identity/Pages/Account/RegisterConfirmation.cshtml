@@ -1,0 +1,33 @@
+@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Registration confirmed";
+}
+
+<section class="auth-page-shell">
+    <div class="auth-card auth-card--narrow text-center">
+        <div class="auth-confirmation-icon" aria-hidden="true">
+            <i class="bi bi-check2-circle"></i>
+        </div>
+
+        <div class="auth-card-header">
+            <h1 class="auth-card-title">@ViewData["Title"]</h1>
+            <p class="auth-card-copy mb-0">
+                Your account has been created successfully.
+            </p>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.Email))
+        {
+            <p class="auth-confirmation-email">
+                You are signed in as <strong>@Model.Email</strong>.
+            </p>
+        }
+
+        <div class="auth-submit-wrap">
+            <a href="@Model.ContinueUrl" class="btn btn-lg btn-primary auth-submit-button">
+                Continue
+            </a>
+        </div>
+    </div>
+</section>
